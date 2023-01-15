@@ -2,7 +2,7 @@ import React from "react";
 
 const PrimaryButton = ({ children }) => {
   return (
-    <button className="btn bg-orange-500 text-white border-none">
+    <button className="btn bg-orange-500 hover:bg-orange-400 duration-500 text-white border-none">
       {children}
     </button>
   );

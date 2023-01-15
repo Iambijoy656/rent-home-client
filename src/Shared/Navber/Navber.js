@@ -1,7 +1,21 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Navber = () => {
+  const { logOut, user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const menuItems = (
     <>
       <li>
@@ -9,8 +23,8 @@ const Navber = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "font-medium tracking-wide text-orange-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
-              : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              ? "font-medium  text-orange-600 underline underline-offset-2 transition-colors duration-200 bg-transparent"
+              : "font-medium  text-gray-700 transition-colors duration-200 bg-transparent"
           }
           end
         >
@@ -23,8 +37,8 @@ const Navber = () => {
           to="/about"
           className={({ isActive }) =>
             isActive
-              ? "font-medium tracking-wide text-orange-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
-              : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              ? "font-medium  text-orange-600 underline underline-offset-2 duration-200 bg-transparent "
+              : "font-medium  text-gray-700 transition-colors duration-200 bg-transparent"
           }
           end
         >
@@ -37,14 +51,65 @@ const Navber = () => {
           to="/contact"
           className={({ isActive }) =>
             isActive
-              ? "font-medium tracking-wide text-orange-600 underline underline-offset-2 transition-colors duration-200 hover:text-deep-purple-accent-400"
-              : "font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              ? "font-medium  text-orange-600 underline underline-offset-2 transition-colors duration-200 bg-transparent"
+              : "font-medium  text-gray-700 transition-colors duration-200 bg-transparent"
           }
           end
         >
           Contact
         </NavLink>
       </li>
+
+      {
+        user?.uid ? (
+        <>
+          <li>
+            <NavLink
+              onClick={handleLogout}
+              to="/logout"
+              className={({ isActive }) =>
+                isActive
+                  ? "font-medium   text-orange-600 underline underline-offset-2 transition-colors duration-200 bg-transparent"
+                  : "font-medium   text-gray-700 transition-colors duration-200 bg-transparent"
+              }
+              end
+            >
+              logout
+            </NavLink>
+          </li>
+
+          <li>
+          <NavLink
+          title={user.displayName}
+            className={({ isActive }) =>
+              isActive
+                ? "font-medium   text-orange-600 underline underline-offset-2 transition-colors duration-200 bg-transparent"
+                : "font-medium   text-gray-700 transition-colors duration-200 bg-transparent"
+            }
+            end
+          >
+            {user?.displayName}
+          </NavLink>
+        </li>
+
+        </>
+      ) : (
+        <>
+          <li>
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive
+                  ? "font-medium   text-orange-600 underline underline-offset-2 transition-colors duration-200 bg-transparent"
+                  : "font-medium   text-gray-700 transition-colors duration-200 bg-transparent"
+              }
+              end
+            >
+              Login
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
