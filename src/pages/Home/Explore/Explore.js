@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 const Explore = () => {
   return (
-    <div className="p-6 py-16 bg-[#f97316] text-white">
+    <div className="p-6 py-16 mb-16 bg-[#f97316] text-white">
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <h2 className="text-center text-5xl tracking-tighter font-bold">

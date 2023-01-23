@@ -60,8 +60,7 @@ const Navber = () => {
         </NavLink>
       </li>
 
-      {
-        user?.uid ? (
+      {user?.uid ? (
         <>
           <li>
             <NavLink
@@ -79,19 +78,18 @@ const Navber = () => {
           </li>
 
           <li>
-          <NavLink
-          title={user.displayName}
-            className={({ isActive }) =>
-              isActive
-                ? "font-medium   text-orange-600 underline underline-offset-2 transition-colors duration-200 bg-transparent"
-                : "font-medium   text-gray-700 transition-colors duration-200 bg-transparent"
-            }
-            end
-          >
-            {user?.displayName}
-          </NavLink>
-        </li>
-
+            <NavLink
+              title={user.displayName}
+              className={({ isActive }) =>
+                isActive
+                  ? "font-medium   text-orange-600 underline underline-offset-2 transition-colors duration-200 bg-transparent"
+                  : "font-medium   text-gray-700 transition-colors duration-200 bg-transparent"
+              }
+              end
+            >
+              {user?.displayName}
+            </NavLink>
+          </li>
         </>
       ) : (
         <>
@@ -113,7 +111,7 @@ const Navber = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 justify-between">
+    <div className="navbar bg-base-100 justify-between max-w-[1440px] mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

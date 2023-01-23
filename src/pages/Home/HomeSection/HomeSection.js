@@ -58,7 +58,7 @@ const HomeSection = () => {
               </span>
             </h2>
             <p className="text-base text-justify text-gray-700 md:text-lg">
-              Here, please note step 3. Sometimes you can't see the result
+              Here, please note step 3 Sometimes you cant see the result
               without a direct comparison. Therefore, I will show you a direct
               comparison of the photo before and after processing, where I
               retouched the photo, removed background noise, and improved color
