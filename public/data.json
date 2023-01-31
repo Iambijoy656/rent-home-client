@@ -1,77 +1,82 @@
 [
   {
     "image": [
-      "https://www.pexels.com/photo/photo-of-living-room-1457842/",
+      "https://www.nobroker.in/blog/wp-content/uploads/2022/07/Modern-Bedroom-Design.jpg",
       "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       "https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     ],
     "date": "11-01-2023",
-    "room-type": "Three bedroom",
+    "room_type": "Three bedroom",
     "rent": "50000",
-    "location": "Wari",
+    "address": "Wari",
     "district": "Dhaka",
-    "available":"true",
-    "owner number": "+880186383989",
+    "available": "true",
+    "owner_number": "+880186383989",
+    "owner_name": "kalam",
     "description": "This 2750 sqft furnished apartment is up for rent at Baridhara diplomatic zone. This high-class property situated around a highly secured area on the 4th floor has 3 beds, 4 baths, 1 large living room balcony, a living room, a drawing & dining space, servant bath, which is perfect for a family."
   },
   {
     "image": [
-      "https://www.pexels.com/photo/photo-of-living-room-1457842/",
+      "https://5.imimg.com/data5/SELLER/Default/2021/8/ES/CY/SD/39221816/img-20210722-wa0117-500x500.jpg",
       "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       "https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     ],
     "date": "11-01-2023",
-    "room-type": "Three bedroom",
+    "room_type": "Three bedroom,Two bathrooms",
     "rent": "50000",
-    "location": "Wari",
+    "address": "Wari",
     "district": "Dhaka",
-    "available":"false",
-    "owner number": "+880186383989",
+    "available": "true",
+    "owner_number": "+880186383989",
+    "owner_name": "kalam",
     "description": "This 2750 sqft furnished apartment is up for rent at Baridhara diplomatic zone. This high-class property situated around a highly secured area on the 4th floor has 3 beds, 4 baths, 1 large living room balcony, a living room, a drawing & dining space, servant bath, which is perfect for a family."
   },
   {
     "image": [
-      "https://www.pexels.com/photo/photo-of-living-room-1457842/",
+      "https://media.designcafe.com/wp-content/uploads/2022/04/23155313/bed-decoration-enhances-the-rooms-overall-look.jpg",
       "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       "https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     ],
     "date": "11-01-2023",
-    "room-type": "Three bedroom",
+    "room_type": "Three bedroom",
     "rent": "50000",
-    "location": "Wari",
+    "address": "Wari",
     "district": "Dhaka",
-    "available":"true",
-    "owner number": "+880186383989",
+    "available": "true",
+    "owner_number": "+880186383989",
+    "owner_name": "Bijoy",
     "description": "This 2750 sqft furnished apartment is up for rent at Baridhara diplomatic zone. This high-class property situated around a highly secured area on the 4th floor has 3 beds, 4 baths, 1 large living room balcony, a living room, a drawing & dining space, servant bath, which is perfect for a family."
   },
   {
     "image": [
-      "https://www.pexels.com/photo/photo-of-living-room-1457842/",
-      "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://i.ytimg.com/vi/xD7xbtNzW9w/maxresdefault.jpg",
+      "https://cdn.shopify.com/s/files/1/0096/4594/9013/articles/bedroom_set_design.jpg?v=1663054873",
       "https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     ],
     "date": "11-01-2023",
-    "room-type": "Three bedroom",
-    "available":"true",
+    "room_type": "Three bedroom",
+    "available": "true",
     "rent": "50000",
-    "location": "Wari",
+    "address": "Wari",
     "district": "Dhaka",
-    "owner number": "+880186383989",
+    "owner_number": "+880186383989",
+    "owner_name": "Jamal",
     "description": "This 2750 sqft furnished apartment is up for rent at Baridhara diplomatic zone. This high-class property situated around a highly secured area on the 4th floor has 3 beds, 4 baths, 1 large living room balcony, a living room, a drawing & dining space, servant bath, which is perfect for a family."
   },
   {
     "image": [
-      "https://www.pexels.com/photo/photo-of-living-room-1457842/",
+      "https://www.nobroker.in/blog/wp-content/uploads/2022/07/Modern-Bedroom-Design.jpg",
       "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       "https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     ],
     "date": "11-01-2023",
-    "room-type": "Three bedroom",
+    "room_type": "Three bedroom",
     "rent": "50000",
-    "location": "Wari",
-    "available":"false",
+    "address": "Wari",
+    "available": "false",
     "district": "Dhaka",
-    "owner number": "+880186383989",
+    "owner_number": "+880186383989",
+    "owner_name": "Robin",
     "description": "This 2750 sqft furnished apartment is up for rent at Baridhara diplomatic zone. This high-class property situated around a highly secured area on the 4th floor has 3 beds, 4 baths, 1 large living room balcony, a living room, a drawing & dining space, servant bath, which is perfect for a family."
   }
 ]

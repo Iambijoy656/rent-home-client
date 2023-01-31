@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import BachelorsHomeCard from "../../component/BechalorsHomeCard/BachelorsHomeCard";
-import PrimaryButton from "../../component/PrimaryButton/PrimaryButton";
+import Loading from "../Loading/Loading";
+
 
 const LatestBachelorsHome = () => {
   const { data: latestBachelosHomes = [], isLoading } = useQuery({
@@ -13,6 +14,9 @@ const LatestBachelorsHome = () => {
     },
   });
 
+  if (isLoading && !latestBachelosHomes.length ) return <Loading />;;
+
+
   return (
     <div className="my-10 mt-16 container mx-auto">
       <h2 className="text-3xl font-bold text-center">Latest Bachelors Home</h2>
@@ -21,6 +25,7 @@ const LatestBachelorsHome = () => {
         {latestBachelosHomes.map((home) => (
           <BachelorsHomeCard key={home.id} home={home}></BachelorsHomeCard>
         ))}
+        {isLoading && <Loading></Loading>}
       </div>
 
       <div className="text-center my-5">

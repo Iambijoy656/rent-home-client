@@ -1,15 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const BachelorsHomeCard = ({ home }) => {
+const FamilyHomeCard = ({ home }) => {
   const {
     _id,
     image,
     address,
     available,
     district,
-    need_room_mates,
-    gender,
     date,
     rent,
     room_type,
@@ -17,11 +15,10 @@ const BachelorsHomeCard = ({ home }) => {
     owner_name,
     description,
   } = home;
-
   return (
     <div className="card bg-base-100 rounded-none shadow-xl">
       <figure>
-        <img className="h-64 w-full " src={image[2]} alt="homes" />
+        <img className="h-64 w-full " src={image[0]} alt="homes" />
       </figure>
       <div className="p-5">
         <div className="flex  justify-between items-center">
@@ -30,10 +27,6 @@ const BachelorsHomeCard = ({ home }) => {
             <span className="text-xs text-gray-500">Tk/month</span>
             <div className="badge badge-error">New</div>
           </h2>
-          <p className="inline">
-            <span className="font-semibold"> Open For: </span>
-            {need_room_mates} {gender}
-          </p>
         </div>
 
         <div className="w-full mt-2 text-gray-500 flex  justify-between items-center">
@@ -71,17 +64,17 @@ const BachelorsHomeCard = ({ home }) => {
         </p>
       </div>
       <div>
-       <Link to={`/HomeDetails/${_id}`}>
-       <button
-       type="button"
-       className="px-5 py-3 w-full font-semibold space-x-1 bg-orange-500 text-white transition-colors duration-500 ease-in-out hover:bg-orange-600"
-     >
-       Details
-     </button>
-       </Link>
+      <Link to={`/HomeDetails/${_id}`}>
+      <button
+      type="button"
+      className="px-5 py-3 w-full font-semibold space-x-1 bg-orange-500 text-white transition-colors duration-500 ease-in-out hover:bg-orange-600"
+    >
+      Details
+    </button>
+      </Link>
       </div>
     </div>
   );
 };
 
-export default BachelorsHomeCard;
+export default FamilyHomeCard;
