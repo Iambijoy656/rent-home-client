@@ -1,9 +1,12 @@
 import React from 'react';
+import vedio from '../../assets/vedio/homeVedio.mp4';
 
 const About = () => {
     return (
         <div>
-            <h3>This is about pageS</h3>
+            <div>
+                <vedio src={vedio} autoPlay loop muted/>
+            </div>
         </div>
     );
 };

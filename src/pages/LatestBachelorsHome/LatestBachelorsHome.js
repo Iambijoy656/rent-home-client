@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { Link } from "react-router-dom";
 import BachelorsHomeCard from "../../component/BechalorsHomeCard/BachelorsHomeCard";
 import Loading from "../Loading/Loading";
-
 
 const LatestBachelorsHome = () => {
   const { data: latestBachelosHomes = [], isLoading } = useQuery({
@@ -14,8 +14,7 @@ const LatestBachelorsHome = () => {
     },
   });
 
-  if (isLoading && !latestBachelosHomes.length ) return <Loading />;;
-
+  if (isLoading && !latestBachelosHomes.length) return <Loading />;
 
   return (
     <div className="my-10 mt-16 container mx-auto">
@@ -29,12 +28,14 @@ const LatestBachelorsHome = () => {
       </div>
 
       <div className="text-center my-5">
-        <button
-          type="button"
-          className="px-5 py-3 font-semibold space-x-1 bg-orange-500 text-white transition-colors duration-500 ease-in-out hover:bg-orange-600"
-        >
-          See all Bachelors Homes
-        </button>
+        <Link to="allHomes">
+          <button
+            type="button"
+            className="px-5 py-3 font-semibold space-x-1 bg-orange-500 text-white transition-colors duration-500 ease-in-out hover:bg-orange-600"
+          >
+            See all Bachelors Homes
+          </button>
+        </Link>
       </div>
     </div>
   );

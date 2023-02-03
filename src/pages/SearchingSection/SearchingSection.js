@@ -8,16 +8,16 @@ const SearchingSection = () => {
           <option disabled selected>
             Location
           </option>
-          <option>Wari</option>
-          <option>Mirpur</option>
+          <option defaultValue=''>Wari</option>
+          <option defaultValue=''>Mirpur</option>
         </select>
 
         <select className="select select-lg w-full px-12 max-w-xl rounded-none">
-          <option disabled selected>
+          <option defaultValue='' disabled selected>
             Type
           </option>
-          <option>Family</option>
-          <option>Bachelors</option>
+          <option defaultValue={''}>Family</option>
+          <option defaultValue=''>Bachelors</option>
         </select>
         <div className="items-center justify-center hidden md:hidden lg:block">
           <button
