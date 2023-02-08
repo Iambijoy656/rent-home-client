@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 
 const FamilyHomeDetails = () => {
   const homeDetails = useLoaderData();
-//   console.log(homeDetails);
+  //   console.log(homeDetails);
   const {
     image,
     address,
@@ -25,44 +25,46 @@ const FamilyHomeDetails = () => {
           Book Your comfort Home
         </h1>
       </div>
-      <div class="relative max-w-screen-xl px-4 py-8 mx-auto">
-        <div class="grid items-start grid-cols-1 gap-8 md:grid-cols-2">
-          <div class="grid grid-cols-2 gap-4 md:grid-cols-1">
+      <div className="relative max-w-screen-xl px-4 py-8 mx-auto">
+        <div className="grid items-start grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-1">
             <img
               alt="image1"
               src={image[0]}
-              class="object-cover w-full aspect-square rounded-xl"
+              className="object-cover w-full aspect-square rounded-xl"
             />
 
-            <div class="grid grid-cols-2 gap-4 lg:mt-4">
+            <div className="grid grid-cols-2 gap-4 lg:mt-4">
               <img
                 alt="Les Paul"
                 src={image[1]}
-                class="object-cover w-full aspect-square rounded-xl"
+                className="object-cover w-full aspect-square rounded-xl"
               />
 
               <img
                 alt="Les Paul"
                 src={image[2]}
-                class="object-cover w-full aspect-square rounded-xl"
+                className="object-cover w-full aspect-square rounded-xl"
               />
             </div>
           </div>
 
-          <div class="sticky top-0">
-            <strong class="rounded-full border border-blue-600 bg-gray-100 px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600">
+          <div className="sticky top-0">
+            <strong className="rounded-full border border-blue-600 bg-gray-100 px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600">
               Home Details
             </strong>
 
-            <div class="flex justify-between mt-8">
-              <div class="max-w-[35ch]">
-                <h1 class="text-2xl font-bold">Owner Name : {owner_name}</h1>
+            <div className="flex justify-between mt-8">
+              <div className="max-w-[35ch]">
+                <h1 className="text-2xl font-bold">
+                  Owner Name : {owner_name}
+                </h1>
 
-                <p class="mt-0.5 text-sm">Best Home</p>
+                <p className="mt-0.5 text-sm">Best Home</p>
 
-                <div class="mt-2 -ml-0.5 flex">
+                <div className="mt-2 -ml-0.5 flex">
                   <svg
-                    class="w-5 h-5 text-yellow-400"
+                    className="w-5 h-5 text-yellow-400"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -71,7 +73,7 @@ const FamilyHomeDetails = () => {
                   </svg>
 
                   <svg
-                    class="w-5 h-5 text-yellow-400"
+                    className="w-5 h-5 text-yellow-400"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -80,7 +82,7 @@ const FamilyHomeDetails = () => {
                   </svg>
 
                   <svg
-                    class="w-5 h-5 text-yellow-400"
+                    className="w-5 h-5 text-yellow-400"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -89,7 +91,7 @@ const FamilyHomeDetails = () => {
                   </svg>
 
                   <svg
-                    class="w-5 h-5 text-yellow-400"
+                    className="w-5 h-5 text-yellow-400"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -98,7 +100,7 @@ const FamilyHomeDetails = () => {
                   </svg>
 
                   <svg
-                    class="w-5 h-5 text-gray-200"
+                    className="w-5 h-5 text-gray-200"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -108,32 +110,32 @@ const FamilyHomeDetails = () => {
                 </div>
               </div>
 
-              <p class="text-xl font-bold">
+              <p className="text-xl font-bold">
                 {rent} <span className="text-xs text-gray-500">Tk/month</span>
               </p>
             </div>
 
-            <details class="group relative mt-4 [&_summary::-webkit-details-marker]:hidden">
-              <summary class="block">
+            <details className="group relative mt-4 [&_summary::-webkit-details-marker]:hidden">
+              <summary className="block">
                 <div>
-                  <div class="prose max-w-none group-open:hidden">
+                  <div className="prose max-w-none group-open:hidden">
                     <p>{description.slice(0, 170)}...</p>
                   </div>
 
-                  <span class="mt-4 text-sm font-medium underline cursor-pointer group-open:absolute group-open:bottom-0 group-open:left-0 group-open:mt-0">
+                  <span className="mt-4 text-sm font-medium underline cursor-pointer group-open:absolute group-open:bottom-0 group-open:left-0 group-open:mt-0">
                     Read More
                   </span>
                 </div>
               </summary>
 
-              <div class="pb-6 prose max-w-none">
+              <div className="pb-6 prose max-w-none">
                 <p>{description.slice(0, 165)}</p>
 
                 <p>{description.slice(165)}</p>
               </div>
             </details>
 
-            <form class="mt-5">
+            <form className="mt-5">
               <div className="p-5">
                 <div className="w-full mt-2 text-gray-500 flex  justify-between items-center">
                   <p>
@@ -163,10 +165,10 @@ const FamilyHomeDetails = () => {
                 </div>
               </div>
 
-              <div class="flex mt-8">
+              <div className="flex mt-8">
                 <button
                   type="submit"
-                  class="block px-5 py-3 ml-3 text-xs font-medium text-white bg-orange-500 rounded hover:bg-orange-600 hover:transition ease-in-out duration-150"
+                  className="block px-5 py-3 ml-3 text-xs font-medium text-white bg-orange-500 rounded hover:bg-orange-600 hover:transition ease-in-out duration-150"
                 >
                   Book
                 </button>

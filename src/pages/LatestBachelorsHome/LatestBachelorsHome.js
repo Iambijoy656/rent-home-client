@@ -14,6 +14,15 @@ const LatestBachelorsHome = () => {
     },
   });
 
+  // const { data: bachelosHomes = []} = useQuery({
+  //   queryKey: ["bachelosHomes"],
+  //   queryFn: async () => {
+  //     const response = await fetch("http://localhost:5001/bachelosHomes");
+  //     const data = await response.json();
+  //     return data;
+  //   }
+  // });
+
   if (isLoading && !latestBachelosHomes.length) return <Loading />;
 
   return (
@@ -22,7 +31,7 @@ const LatestBachelorsHome = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6  mx-auto my-10">
         {latestBachelosHomes.map((home) => (
-          <BachelorsHomeCard key={home.id} home={home}></BachelorsHomeCard>
+          <BachelorsHomeCard key={home._id} home={home}></BachelorsHomeCard>
         ))}
         {isLoading && <Loading></Loading>}
       </div>

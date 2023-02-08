@@ -28,7 +28,6 @@ const BachelorsHomeCard = ({ home }) => {
           <h2 className="card-title">
             {rent}
             <span className="text-xs text-gray-500">Tk/month</span>
-           
           </h2>
           <p className="inline">
             <span className="font-semibold"> Open For: </span>

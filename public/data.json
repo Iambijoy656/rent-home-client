@@ -5,11 +5,12 @@
       "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       "https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     ],
-    "date": "11-01-2023",
+    "date": "15-01-2023",
+    "type": "family",
     "room_type": "Three bedroom",
     "rent": "50000",
-    "address": "Wari",
-    "district": "Dhaka",
+    "address": "wari",
+    "district": "dhaka",
     "available": "true",
     "owner_number": "+880186383989",
     "owner_name": "kalam",
@@ -22,10 +23,11 @@
       "https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     ],
     "date": "11-01-2023",
-    "room_type": "Three bedroom,Two bathrooms",
+    "type": "family",
+    "room_type": "Three bedroom",
     "rent": "50000",
-    "address": "Wari",
-    "district": "Dhaka",
+    "address": "wari",
+    "district": "dhaka",
     "available": "true",
     "owner_number": "+880186383989",
     "owner_name": "kalam",
@@ -39,9 +41,10 @@
     ],
     "date": "11-01-2023",
     "room_type": "Three bedroom",
+    "type": "family",
     "rent": "50000",
-    "address": "Wari",
-    "district": "Dhaka",
+    "address": "wari",
+    "district": "dhaka",
     "available": "true",
     "owner_number": "+880186383989",
     "owner_name": "Bijoy",
@@ -56,9 +59,10 @@
     "date": "11-01-2023",
     "room_type": "Three bedroom",
     "available": "true",
+    "type": "family",
     "rent": "50000",
-    "address": "Wari",
-    "district": "Dhaka",
+    "address": "wari",
+    "district": "dhaka",
     "owner_number": "+880186383989",
     "owner_name": "Jamal",
     "description": "This 2750 sqft furnished apartment is up for rent at Baridhara diplomatic zone. This high-class property situated around a highly secured area on the 4th floor has 3 beds, 4 baths, 1 large living room balcony, a living room, a drawing & dining space, servant bath, which is perfect for a family."
@@ -72,11 +76,110 @@
     "date": "11-01-2023",
     "room_type": "Three bedroom",
     "rent": "50000",
-    "address": "Wari",
+    "address": "mirpur",
+    "type": "family",
     "available": "false",
-    "district": "Dhaka",
+    "district": "dhaka",
     "owner_number": "+880186383989",
     "owner_name": "Robin",
     "description": "This 2750 sqft furnished apartment is up for rent at Baridhara diplomatic zone. This high-class property situated around a highly secured area on the 4th floor has 3 beds, 4 baths, 1 large living room balcony, a living room, a drawing & dining space, servant bath, which is perfect for a family."
+  },
+
+  {
+    "image": [
+      "https://media.designcafe.com/wp-content/uploads/2019/12/17110953/drawing-room-design-ideas.jpg",
+      "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    ],
+    "date": "15-01-2023",
+    "need_room_mates": "1",
+    "gender": "Female",
+    "room_type": "Two bedroom",
+    "rent": "5000",
+    "address": "wari",
+    "available": "true",
+    "district": "dhaka",
+    "owner_name": "Rajesh",
+    "type": "bechalors",
+    "owner_number": "+880186383989",
+    "description": "This 2750 sqft furnished apartment is up for rent at Baridhara diplomatic zone. This high-class property situated around a highly secured area on the 4th floor has 3 beds, 4 baths, 1 large living room balcony, a living room, a drawing & dining space, servant bath, which is perfect for a family."
+  },
+  {
+    "image": [
+      "https://media.designcafe.com/wp-content/uploads/2019/12/17110953/drawing-room-design-ideas.jpg",
+      "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    ],
+    "date": "13-01-2023",
+    "need_room_mates": "2",
+    "gender": "Male",
+    "room_type": "Three bedroom",
+    "rent": "5000",
+    "address": "wari",
+    "available": "false",
+    "district": "dhaka",
+    "type": "bechalors",
+    "owner_name": "Bijoy",
+    "owner_number": "+880186383989",
+    "description": "This 2750 sqft furnished apartment is up for rent at Baridhara diplomatic zone. This high-class property situated around a highly secured area on the 4th floor has 3 beds, 4 baths, 1 large living room balcony, a living room, a drawing & dining space, servant bath, which is perfect for a family."
+  },
+  {
+    "image": [
+      "https://media.designcafe.com/wp-content/uploads/2019/12/17110953/drawing-room-design-ideas.jpg",
+      "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    ],
+    "date": "11-01-2023",
+    "need_room_mates": "2",
+    "room_type": "Three bedroom",
+    "rent": "6000",
+    "address": "wari",
+    "gender": "Male",
+    "available": "false",
+    "type": "bechalors",
+    "district": "dhaka",
+    "owner_name": "Raja",
+    "owner_number": "+880186383989",
+    "description": "This 2750 sqft furnished apartment is up for rent at Baridhara diplomatic zone. This high-class property situated around a highly secured area on the 4th floor has 3 beds, 4 baths, 1 large living room balcony, a living room, a drawing & dining space, servant bath, which is perfect for a family."
+  },
+  {
+    "image": [
+      "https://media.designcafe.com/wp-content/uploads/2019/12/17110953/drawing-room-design-ideas.jpg",
+      "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    ],
+    "date": "12-01-2023",
+    "need_room_mates": "2",
+    "room_type": "Three bedroom",
+    "rent": "6000",
+    "address": "wari",
+    "available": "true",
+    "gender": "Male",
+    "district": "dhaka",
+    "type": "bechalors",
+    "owner_name": "kalam",
+    "owner_number": "+880186383989",
+    "description": "This 2750 sqft furnished apartment is up for rent at Baridhara diplomatic zone. This high-class property situated around a highly secured area on the 4th floor has 3 beds, 4 baths, 1 large living room balcony, a living room, a drawing & dining space, servant bath, which is perfect for a family."
+  },
+  {
+    "image": [
+      "https://media.designcafe.com/wp-content/uploads/2019/12/17110953/drawing-room-design-ideas.jpg",
+      "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    ],
+    "date": "1-01-2023",
+    "need_room_mates": "2",
+    "gender": "Male",
+    "room_type": "Three bedroom",
+    "rent": "6000",
+    "address": "mirpur",
+    "available": "true",
+    "type": "bechalors",
+    "district": "dhaka",
+    "owner_name": "joy",
+    "owner_number": "+880186383989",
+    "description": "This 2750 sqft furnished apartment is up for rent at Baridhara diplomatic zone. This high-class property situated around a highly secured area on the 4th floor has 3 beds, 4 baths, 1 large living room balcony, a living room, a drawing & dining space, servant bath, which is perfect for a family."
   }
+
+
 ]

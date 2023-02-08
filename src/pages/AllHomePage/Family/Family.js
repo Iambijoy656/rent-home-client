@@ -1,21 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import FamilyHomeCard from "../../../component/FamilyHomeCard/FamilyHomeCard";
+import { SearchContext } from "../../../context/SearchProvider";
 import Loading from "../../Loading/Loading";
 
 const Family = () => {
   const [loading, setLoading] = useState(false);
   const [familyHome, setFamilyHome] = useState([]);
+  const {
+    location,
+    setLocation,
+    district,
+    setDistrict,
+    type,
+    setType,
+    submitOn,
+  } = useContext(SearchContext);
 
   useEffect(() => {
     setLoading(true);
     setFamilyHome([]);
-    fetch("http://localhost:5001/familyHomes")
+    fetch(
+      `http://localhost:5001/homes?location=${location}&&district=${district}&&type=${type}`
+    )
       .then((response) => response.json())
       .then((data) => {
         setLoading(false);
         setFamilyHome(data);
+        setDistrict("");
+        setType("");
+        setLocation("");
       });
-  }, []);
+  }, [submitOn]);
   return (
     <div className="mb-10 max-w-[70%]">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4  ">

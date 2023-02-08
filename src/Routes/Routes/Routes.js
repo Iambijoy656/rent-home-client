@@ -65,17 +65,16 @@ export const router = createBrowserRouter([
     element: <AllHomeLayout />,
     children: [
       {
-        path:"/allHomes",
-        element: <AllHome />
-
+        path: "/allHomes",
+        element: <AllHome />,
       },
       {
-        path: "/allHomes/bechelors",
-        element: <Bachelors/>,
+        path: "/allHomes/bechalors",
+        element: <Bachelors />,
       },
       {
         path: "/allHomes/family",
-        element:<Family/>,
+        element: <Family />,
       },
     ],
   },

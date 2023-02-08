@@ -114,7 +114,7 @@ const SignUp = () => {
                             className="input input-bordered w-full max-w-xs" />
                         {errors.password && <small className='text-error mt-2'>{errors.password.message}</small>}
                     </div>
-                    <input className='btn bg-[#f97316] border-none hover:bg-orange-600 w-full my-3' value='Sign Up' type="submit" />
+                    <input className='btn bg-[#f97316] border-none hover:bg-orange-600 w-full my-3' defaultValue='Sign Up' type="submit" />
                 </form>
 
                 <p>Already have an account <Link to='/login' className='text-primary my-2'>Please Login</Link></p>

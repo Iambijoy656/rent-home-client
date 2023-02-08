@@ -118,7 +118,7 @@ const Login = () => {
 
           <input
             className="btn bg-[#f97316] hover:bg-orange-700 border-none w-full mt-3"
-            value="Login"
+            defaultValue="Login"
             type="submit"
           />
           <span className="text-sm  text-center mb-3 ml-2 text-blue-500">

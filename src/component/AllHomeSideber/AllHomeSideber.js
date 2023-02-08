@@ -3,9 +3,14 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
 const AllHomeSideber = () => {
-const [data:location=[]]=useQuery([
-
-])
+  const { data: locations = [] } = useQuery({
+    queryKey: ["location"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5001/commonLocation");
+      const data = await res.json();
+      return data;
+    },
+  });
 
   return (
     <div className="mt-20 ">
@@ -14,10 +19,10 @@ const [data:location=[]]=useQuery([
           Find Your <span className="text-orange-500">Perfact</span> Home
         </h2>
       </div>
-      <div class="flex-col gap-5 justify-between mt-8 ">
+      <div className="flex-col gap-5 justify-between mt-8 ">
         <div className="mb-5">
           <NavLink
-            to="/allHomes/bechelors"
+            to="/allHomes/bechalors"
             className={({ isActive }) =>
               isActive
                 ? "font-medium  text-white  bg-orange-500 p-4 m-2"
@@ -37,23 +42,23 @@ const [data:location=[]]=useQuery([
             Family Home
           </NavLink>
         </div>
-      <form>
-      <select className="select border-orange-500  w-full border-2 max-w-xs my-4 focus:outline-none">
-      <option disabled selected>
-        Location
-      </option>
-      <option>Mirpur</option>
-      <option>Wari</option>
-      <option>Mohakhali</option>
-    </select>
-    <select className="select border-orange-500 h w-full border-2 max-w-xs my-2 focus:outline-none">
-      <option disabled selected>
-        Type
-      </option>
-      <option>bechelors</option>
-      <option>family</option>
-    </select>
-      </form>
+        <form>
+          <select className="select border-orange-500  w-full border-2 max-w-xs my-4 focus:outline-none">
+            <option disabled selected>
+              Location
+            </option>
+            {locations?.map((item, index) => 
+                <option defaultValue={item} key={index}>{item}</option>
+            )}
+          </select>
+          <select className="select border-orange-500 h w-full border-2 max-w-xs my-2 focus:outline-none">
+            <option disabled selected>
+              Type
+            </option>
+            <option>bechelors</option>
+            <option>family</option>
+          </select>
+        </form>
 
         <div className="text-center my-5">
           <Link to="allHomes">

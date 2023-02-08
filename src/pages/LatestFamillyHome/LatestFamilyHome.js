@@ -21,7 +21,7 @@ const LatestFamilyHome = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6  mx-auto my-10">
         {latestFAmilyHomes.map((home) => (
-          <FamilyHomeCard key={home.id} home={home}></FamilyHomeCard>
+          <FamilyHomeCard key={home._id} home={home}></FamilyHomeCard>
         ))}
         {isLoading && <Loading></Loading>}
       </div>
