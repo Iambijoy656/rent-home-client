@@ -1,48 +1,38 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+// import React, { useEffect, useState } from "react";
+// import { useLocation } from "react-router-dom";
 
-const AllHome = (props) => {
-  const location = useLocation();
+// const AllHome = (props) => {
+//   const [loading, setLoading] = useState([]);
+//   const [homes, setHomes] = useState([]);
+//   useEffect(() => {
+//     setLoading(true);
 
-  const data = location.state?.data;
-  // console.log(data);
+//     fetch(`http://localhost:5001/homes`)
+//       .then((response) => response.json())
+//       .then((data) => {
+//         setLoading(false);
+//         setHomes(data);
+//         console.log(data)
+//       });
+//   }, []);
 
-  return (
-    <section>
-      <div className="relative max-w-screen-xl px-4 py-8 mx-auto ">
-        <div className="grid items-start grid-cols-3 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <img
-            alt="Les Paul"
-            src="https://images.unsplash.com/photo-1456948927036-ad533e53865c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-            className="object-cover w-full aspect-square rounded-xl"
-          />
-          <img
-            alt="Les Paul"
-            src="https://images.unsplash.com/photo-1456948927036-ad533e53865c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-            className="object-cover w-full aspect-square rounded-xl"
-          />
 
-          <img
-            alt="Les Paul"
-            src="https://images.unsplash.com/photo-1456948927036-ad533e53865c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-            className="object-cover w-full aspect-square rounded-xl"
-          />
 
-          <img
-            alt="Les Paul"
-            src="https://images.unsplash.com/photo-1456948927036-ad533e53865c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-            className="object-cover w-full aspect-square rounded-xl"
-          />
+//   return (
+//     <section>
+//       <div className="relative max-w-screen-xl px-4 py-8 mx-auto ">
+//         <div className="grid items-start grid-cols-3 gap-4 md:grid-cols-2 lg:grid-cols-3">
+//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4  ">
+//         {loading ? <Loading></Loading> : ""}
+//         {bachelorsHome.length > 0 &&
+//           bachelorsHome.map((home) => (
+//             <BachelorsHomeCard key={home._id} home={home}></BachelorsHomeCard>
+//           ))}
+//       </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
-          <img
-            alt="Les Paul"
-            src="https://images.unsplash.com/photo-1456948927036-ad533e53865c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-            className="object-cover w-full aspect-square rounded-xl"
-          />
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default AllHome;
+// export default AllHome;

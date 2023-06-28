@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { SearchContext } from "../../context/SearchProvider";
 
@@ -103,12 +103,15 @@ const SearchingSection = () => {
           <option defaultValue="family">family</option>
           <option defaultValue="bechalors">bechalors</option>
         </select>
+
         <Link to={`/allHomes/${type}`}>
           <div className=" items-center justify-center space-x-1 hidden md:hidden lg:block mt-5 lg:ml-[350px] xl:ml-[460px]">
             <button
+              disabled={!type || !location || !district == true}
+              // style={(!type && !location && !district==true)}
               onClick={() => setSubmitOn(!submitOn)}
               type="submit"
-              className="px-16 py-5 font-semibold uppercase space-x-1 bg-orange-500 text-white transition-colors duration-500 ease-in-out hover:bg-orange-600"
+              className="px-16 py-5 font-semibold uppercase space-x-1 bg-orange-500 text-white transition-colors duration-500 ease-in-out cursor-pointer hover:bg-orange-600 disabled:bg-orange-400 cursor-auto"
             >
               Search
             </button>
@@ -118,6 +121,7 @@ const SearchingSection = () => {
       <Link to={`/allHomes/${type}`}>
         <div className=" flex items-center justify-center lg:hidden">
           <button
+            disabled={!type || !location || !district == true}
             onClick={() => setSubmitOn(!submitOn)}
             type="submit"
             className="px-10 py-5 h-full font-semibold uppercase space-x-1 bg-orange-500 text-white"

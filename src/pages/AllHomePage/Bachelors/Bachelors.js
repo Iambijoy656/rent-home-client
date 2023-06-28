@@ -8,8 +8,7 @@ const Bachelors = () => {
   const [loading, setLoading] = useState([]);
   const [bachelorsHome, setBachelorsHome] = useState([]);
   const { location,setLocation,district, setDistrict,type, setType,submitOn } = useContext(SearchContext);
-
-
+ 
 
   useEffect(() => {
     setLoading(true);

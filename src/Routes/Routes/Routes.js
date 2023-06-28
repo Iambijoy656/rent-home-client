@@ -8,7 +8,7 @@ import Family from "../../pages/AllHomePage/Family/Family";
 import Contact from "../../pages/Contact/Contact";
 import Home from "../../pages/Home/Home/Home";
 import FamilyHomeDetails from "../../pages/HomeDetails/FamilyHomeDetails";
-import HomeDetails from "../../pages/HomeDetails/HomeDetails";
+import BachelorsHomeDetails from "../../pages/HomeDetails/BachelorsHomeDetails";
 import Login from "../../pages/Login/Login";
 import SignUp from "../../pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/bachelorsHomeDetails/:id",
-        element: <HomeDetails />,
+        element: <BachelorsHomeDetails />,
         loader: ({ params }) =>
           fetch(`http://localhost:5001/bachelosHomesDetails/${params.id}`),
       },
@@ -54,10 +54,6 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5001/familyHomesDetails/${params.id}`),
       },
-      // {
-      //   path: "/allHomes",
-      //   element:<AllHome/>
-      // }
     ],
   },
   {

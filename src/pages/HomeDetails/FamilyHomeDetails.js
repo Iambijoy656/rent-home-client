@@ -170,7 +170,7 @@ const FamilyHomeDetails = () => {
                   type="submit"
                   className="block px-5 py-3 ml-3 text-xs font-medium text-white bg-orange-500 rounded hover:bg-orange-600 hover:transition ease-in-out duration-150"
                 >
-                  Book
+                 If you want to advance pay for rent
                 </button>
               </div>
             </form>

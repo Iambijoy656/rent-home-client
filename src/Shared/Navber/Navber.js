@@ -64,6 +64,16 @@ const Navber = () => {
         <>
           <li>
             <NavLink
+              className=" text-gray-700 font-bold transition-colors duration-200 bg-transparent"
+              title={user.displayName}
+              end
+            >
+              {user?.displayName}
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
               onClick={handleLogout}
               to="/logout"
               className={({ isActive }) =>
@@ -73,21 +83,7 @@ const Navber = () => {
               }
               end
             >
-              logout
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              title={user.displayName}
-              className={({ isActive }) =>
-                isActive
-                  ? "font-medium   text-orange-600 underline underline-offset-2 transition-colors duration-200 bg-transparent"
-                  : "font-medium   text-gray-700 transition-colors duration-200 bg-transparent"
-              }
-              end
-            >
-              {user?.displayName}
+              Logout
             </NavLink>
           </li>
         </>
@@ -137,7 +133,7 @@ const Navber = () => {
             {menuItems}
           </ul>
         </div>
-        <Link className="btn btn-ghost normal-case font-bold text-xl">
+        <Link to="/" className="btn btn-ghost normal-case font-bold text-xl">
           {" "}
           <span className="text-orange-500 text-2xl"> Rent </span> Home
         </Link>

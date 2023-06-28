@@ -7,7 +7,7 @@ const AllHomeLayout = () => {
   return (
     <div>
       <Navber></Navber>
-      <div className="flex gap-5 mt-16 sticky top-0 mx-auto max-w-[96%] ">
+      <div className="flex flex-col lg:flex-row  gap-5 mt-16 sticky top-0  mx-auto max-w-[96%] ">
         <AllHomeSideber></AllHomeSideber>
         <Outlet></Outlet>
       </div>

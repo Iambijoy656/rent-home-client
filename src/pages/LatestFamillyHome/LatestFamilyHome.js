@@ -1,9 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import FamilyHomeCard from "../../component/FamilyHomeCard/FamilyHomeCard";
+import { SearchContext } from "../../context/SearchProvider";
 import Loading from "../Loading/Loading";
 
 const LatestFamilyHome = () => {
+  const { setType } = useContext(SearchContext);
   const { data: latestFAmilyHomes = [], isLoading } = useQuery({
     queryKey: ["latestFAmilyHomes"],
     queryFn: async () => {
@@ -27,12 +30,14 @@ const LatestFamilyHome = () => {
       </div>
 
       <div className="text-center my-5">
-        <button
-          type="button"
-          className="px-5 py-3 font-semibold space-x-1 bg-orange-500 text-white transition-colors duration-500 ease-in-out hover:bg-orange-600"
-        >
-          See all Family Homes
-        </button>
+      <Link to="/allHomes/bechalors" onClick={() => setType("family")}>
+      <button
+        type="button"
+        className="px-5 py-3 font-semibold space-x-1 bg-orange-500 text-white transition-colors duration-500 ease-in-out hover:bg-orange-600"
+      >
+        See all family Homes
+      </button>
+    </Link>
       </div>
     </div>
   );

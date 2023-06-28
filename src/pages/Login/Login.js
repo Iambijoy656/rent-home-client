@@ -67,8 +67,6 @@ const Login = () => {
       });
   };
 
- 
-
   return (
     <div className="h-[800px]  flex justify-center items-center ">
       <div className="w-96 p-8 shadow-2xl border">
@@ -118,12 +116,9 @@ const Login = () => {
 
           <input
             className="btn bg-[#f97316] hover:bg-orange-700 border-none w-full mt-3"
-            defaultValue="Login"
+           value="Login"
             type="submit"
           />
-          <span className="text-sm  text-center mb-3 ml-2 text-blue-500">
-            Email: admin@gmail.com , password: admin@
-          </span>
         </form>
         <p>
           If you new here{" "}
