@@ -64,6 +64,20 @@ const Navber = () => {
         <>
           <li>
             <NavLink
+              to="/dashboard"
+              className={({ isActive }) =>
+                isActive
+                  ? "font-medium   text-orange-600 underline underline-offset-2 transition-colors duration-200 bg-transparent"
+                  : "font-medium   text-gray-700 transition-colors duration-200 bg-transparent"
+              }
+              end
+            >
+              Dashboard
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
               className=" text-gray-700 font-bold transition-colors duration-200 bg-transparent"
               title={user.displayName}
               end
@@ -76,11 +90,7 @@ const Navber = () => {
             <NavLink
               onClick={handleLogout}
               to="/logout"
-              className={({ isActive }) =>
-                isActive
-                  ? "font-medium   text-orange-600 underline underline-offset-2 transition-colors duration-200 bg-transparent"
-                  : "font-medium   text-gray-700 transition-colors duration-200 bg-transparent"
-              }
+              className="inline-flex items-center justify-center font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-orange-600  hover:bg-orange-500 focus:shadow-outline focus:outline-none btn-sm mt-2"
               end
             >
               Logout
@@ -127,7 +137,7 @@ const Navber = () => {
             </svg>
           </label>
           <ul
-            tabIndex={0}
+            tabIndex={1}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             {menuItems}
@@ -141,6 +151,26 @@ const Navber = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
+      <label
+        htmlFor="dashboard-drawer"
+        tabIndex={2}
+        className="btn btn-ghost lg:hidden"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M4 6h16M4 12h8m-8 6h16"
+          />
+        </svg>
+      </label>
     </div>
   );
 };

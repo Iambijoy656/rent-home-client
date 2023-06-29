@@ -12,11 +12,17 @@ import BachelorsHomeDetails from "../../pages/HomeDetails/BachelorsHomeDetails";
 import Login from "../../pages/Login/Login";
 import SignUp from "../../pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import DisplayError from "../../Shared/DisplayError/DisplayError";
+import Dashboard from "../../pages/Dashboard/Dashboard";
+import DashboardLayout from "../../Layout/DashboardLayout";
+import MyRentHome from "../../pages/Dashboard/MyRentHome/MyRentHome";
+import MyProfile from "../../pages/Dashboard/MyProfile/MyProfile";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <DisplayError></DisplayError>,
     children: [
       {
         path: "/",
@@ -71,6 +77,29 @@ export const router = createBrowserRouter([
       {
         path: "/allHomes/family",
         element: <Family />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    errorElement: <DisplayError></DisplayError>,
+    children: [
+      {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
+      },
+      {
+        path: "/dashboard/myRentHome",
+        element: <MyRentHome></MyRentHome>,
+      },
+      {
+        path: "/dashboard/myProfile",
+        element: <MyProfile></MyProfile>,
       },
     ],
   },
