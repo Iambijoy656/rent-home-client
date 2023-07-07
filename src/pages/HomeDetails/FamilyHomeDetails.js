@@ -1,10 +1,11 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const FamilyHomeDetails = () => {
-  const homeDetails = useLoaderData();
+  const details = useLoaderData();
   //   console.log(homeDetails);
   const {
+    _id,
     image,
     address,
     available,
@@ -15,7 +16,7 @@ const FamilyHomeDetails = () => {
     owner_number,
     owner_name,
     description,
-  } = homeDetails;
+  } = details;
   console.log(image);
 
   return (
@@ -165,14 +166,30 @@ const FamilyHomeDetails = () => {
                 </div>
               </div>
 
-              <div className="flex mt-8">
-                <button
-                  type="submit"
-                  className="block px-5 py-3 ml-3 text-xs font-medium text-white bg-orange-500 rounded hover:bg-orange-600 hover:transition ease-in-out duration-150"
-                >
-                 If you want to advance pay for rent
-                </button>
-              </div>
+              {rent && !details.paid && (
+                <div className="flex mt-8">
+                  <Link to={`/dashboard/payment/${_id}`}>
+                    <button
+                      type="submit"
+                      className="block px-5 py-3 ml-3  font-bold text-white bg-orange-500 rounded hover:bg-orange-600 hover:transition ease-in-out duration-150"
+                    >
+                      Advance pay for rent
+                    </button>
+                  </Link>
+                </div>
+              )}
+              {rent && details.paid && (
+                <div className="flex mt-8">
+                  <Link>
+                    <button
+                      type="submit"
+                      className="block px-5 py-3 ml-3  font-bold text-white bg-green-500 rounded hover:bg-green-600 hover:transition ease-in-out duration-150"
+                    >
+                      Already paid
+                    </button>
+                  </Link>
+                </div>
+              )}
             </form>
           </div>
         </div>

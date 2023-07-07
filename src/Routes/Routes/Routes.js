@@ -17,6 +17,7 @@ import Dashboard from "../../pages/Dashboard/Dashboard";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import MyRentHome from "../../pages/Dashboard/MyRentHome/MyRentHome";
 import MyProfile from "../../pages/Dashboard/MyProfile/MyProfile";
+import Payment from "../../pages/Dashboard/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -100,6 +101,16 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/myProfile",
         element: <MyProfile></MyProfile>,
+      },
+      {
+        path: "/dashboard/payment/:id",
+        element: (
+          <PrivateRoute>
+            <Payment></Payment>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5001/home/${params.id}`),
       },
     ],
   },

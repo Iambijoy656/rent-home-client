@@ -11,7 +11,8 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { createUser, updateUser, signInWithGoogle ,verifyEmail} = useContext(AuthContext);
+  const { createUser, updateUser, signInWithGoogle, verifyEmail } =
+    useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -21,11 +22,8 @@ const SignUp = () => {
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        // console.log(user)
-        handleVerifyEmail()
+        handleVerifyEmail();
         toast.success(" Created Successfully");
-        navigate('/')
-
 
         const userInfo = {
           displayName: data.name,
@@ -33,7 +31,7 @@ const SignUp = () => {
 
         updateUser(userInfo)
           .then((result) => {
-            console.log(result);
+            userSaved(data.name, data.email, data.role);
           })
           .catch((err) => {
             console.log(err);
@@ -53,26 +51,62 @@ const SignUp = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
+                const userForDB = {
+                    name: user?.displayName,
+                    email: user?.email,
+                    role: "renter",
+
+                };
+                console.log(userForDB);
+
+                fetch(`http://localhost:5001/users`, {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(userForDB),
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.message) {
+                            navigate("/");
+                        }
+                        if (data.acknowledged) {
+                            toast.success("login successfully");
+                            navigate("/");
+                        }
+                    });
       })
 
       .catch((error) => console.error(error));
   };
 
+  // veriEmail
+  const handleVerifyEmail = () => {
+    verifyEmail()
+      .then(() => {
+        toast.success("Please Check your Email and verify ");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
-    // veriEmail
-    const handleVerifyEmail = () => {
-      verifyEmail()
-          .then(() => {
-              toast.success('Please Check your Email and verify ')
-          })
-          .catch(error => {
-              console.error(error);
-          })
-  }
-
-
-
-
+  const userSaved = (name, email, role) => {
+    const user = { name, email, role };
+    fetch("http://localhost:5001/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("save data", data);
+        navigate("/");
+      });
+  };
 
   return (
     <div className="h-[800px]  flex justify-center items-center">
