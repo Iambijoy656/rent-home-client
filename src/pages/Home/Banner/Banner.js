@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <section className="bg-[#f2f6f7] my-4">
+    <section className="bg-[#f2f6f7] my-4 ">
       <div className={`hero justify-center  bg-no-repeat bg-cover bg-center`}>
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img src={house} className=" lg:w-1/2 rounded-lg" alt="" />
           <div>
-            <h1 className="text-5xl font-bold ">
+            <h1 className="text-5xl font-bold  text-slate-700">
               Find Your Dream <br /> House By Us
             </h1>
-            <p className="py-6 text-justify mr-5">
+            <p className="py-6 text-justify mr-5 text-slate-700">
               Are you searching for house rent in Dhaka? Renting a house in
               Dhaka sounds to be a lengthy process. We’ll make that easier for
               you. RENTS (Real Estate Needs with Trusted Solutions) is the

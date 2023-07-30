@@ -1,42 +1,49 @@
 import React from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../../context/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
 
 const MyRentHome = () => {
+  const { user } = useContext(AuthContext);
+
+  const url = `https://rent-home-server.vercel.app/rentHomes?email=${user?.email}`;
+
+  const { data: rentHomes = [] } = useQuery({
+    queryKey: ["rentHomes", user?.email],
+    queryFn: async () => {
+      const res = await fetch(url);
+      const data = await res.json();
+      console.log(data);
+      return data;
+    },
+  });
+
   return (
-    <div className="my-5 ml-5">
+    <div className="my-5 ml-5 ">
       <h2 className="text-2xl font-medium text-gray-600 mb-3">My Rent Home</h2>
-      <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-          <thead>
+      <div className="overflow-x-auto bg-white text-gray-600">
+        <table className="table w-full bg-white">
+          <thead className="bg-white">
             <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th className="bg-white"></th>
+              <th className="bg-white">Name</th>
+              <th className="bg-white">Email</th>
+              <th className="bg-white">Home ID</th>
+              <th className="bg-white">Rent</th>
+              <th className="bg-white">Transaction ID</th>
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
-            <tr>
-              <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
-            </tr>
-            {/* row 2 */}
-            <tr className="hover">
-              <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
-            </tr>
-            {/* row 3 */}
-            <tr>
-              <th>3</th>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>Red</td>
-            </tr>
+            {rentHomes?.map((home, i) => (
+              <tr key={home._id}>
+                <th className="bg-white">{i + 1}</th>
+                <td className="bg-white">{home.name}</td>
+                <td className="bg-white">{home.email}</td>
+                <td className="bg-white">{home.bookHomeId}</td>
+                <td className="bg-white">{home.rent} tk</td>
+                <td className="bg-white">{home.transactionId}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
-// import useAdmin from '../hooks/useAdmin';
-
+import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 import Navber from "../Shared/Navber/Navber";
+import useAdmin from "../hooks/useAdmin";
+import useOwner from "../hooks/useOwner";
 
 const DashboardLayout = () => {
-  //   const { user } = useContext(AuthContext);
-  // const [isAdmin] = useAdmin(user.email)
+  const { user } = useContext(AuthContext);
+  const [isAdmin] = useAdmin(user.email);
+  const [isOwner] = useOwner(user.email);
   return (
     <div>
-      <div className="border-b">
+      <div className="border-b bg-white">
         <Navber></Navber>
       </div>
       <div className="drawer drawer-mobile lg:container mx-auto lg:max-w-screen-xl">
@@ -19,18 +20,33 @@ const DashboardLayout = () => {
           type="checkbox"
           className="drawer-toggle"
         />
-        <div className="drawer-content">
+        <div className="drawer-content bg-white">
           <Outlet></Outlet>
         </div>
-        <div className="drawer-side border border-l-0">
+        <div className="drawer-side border border-l-0  bg-white">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 bg-base-100 lg:bg-none w-80 text-base-content">
+          <ul className="menu p-4 text-black lg:bg-none w-80  bg-white">
             <li>
               <Link to="/dashboard/myRentHome">My Rent Home</Link>
             </li>
             <li>
-                <Link to='/dashboard/myProfile'>MyProfile</Link>
+              <Link to="/dashboard/myProfile">MyProfile</Link>
             </li>
+            {isAdmin && (
+              <>
+                <li>
+                  <Link to="/dashboard/allUsers">All Users</Link>
+                </li>
+              </>
+            )}
+
+            {isOwner && (
+              <>
+                <li>
+                  <Link to="/dashboard/addhome">Add a Home</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

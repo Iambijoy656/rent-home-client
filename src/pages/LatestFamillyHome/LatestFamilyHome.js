@@ -10,13 +10,15 @@ const LatestFamilyHome = () => {
   const { data: latestFAmilyHomes = [], isLoading } = useQuery({
     queryKey: ["latestFAmilyHomes"],
     queryFn: async () => {
-      const response = await fetch("http://localhost:5001/latestFamilyHomes");
+      const response = await fetch(
+        "https://rent-home-server.vercel.app/latestFamilyHomes"
+      );
       const data = await response.json();
       return data;
     },
   });
 
-  if (isLoading && !latestFAmilyHomes.length ) return <Loading />;;
+  if (isLoading && !latestFAmilyHomes.length) return <Loading />;
 
   return (
     <div className="my-10 mt-20 container mx-auto">
@@ -30,14 +32,14 @@ const LatestFamilyHome = () => {
       </div>
 
       <div className="text-center my-5">
-      <Link to="/allHomes/bechalors" onClick={() => setType("family")}>
-      <button
-        type="button"
-        className="px-5 py-3 font-semibold space-x-1 bg-orange-500 text-white transition-colors duration-500 ease-in-out hover:bg-orange-600"
-      >
-        See all family Homes
-      </button>
-    </Link>
+        <Link to="/allHomes/family" onClick={() => setType("family")}>
+          <button
+            type="button"
+            className="px-5 py-3 font-semibold space-x-1 bg-orange-500 text-white transition-colors duration-500 ease-in-out hover:bg-orange-600"
+          >
+            See all family Homes
+          </button>
+        </Link>
       </div>
     </div>
   );

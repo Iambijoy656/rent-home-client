@@ -72,7 +72,7 @@ const Login = () => {
       <div className="w-96 p-8 shadow-2xl border">
         <h2 className="text-3xl text-center font-bold">Login</h2>
         <form onSubmit={handleSubmit(handleLogin)}>
-          <div className="form-control w-full max-w-xs">
+          <div className="form-control w-full max-w-xs text-black">
             <label className="label">
               {" "}
               <span className="label-text">Email</span>
@@ -82,13 +82,13 @@ const Login = () => {
               {...register("email", {
                 required: "Email Address is required",
               })}
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs bg-white"
             />
             {errors.email && (
               <p className="text-error mt-2">{errors.email?.message}</p>
             )}
           </div>
-          <div className="form-control w-full max-w-xs">
+          <div className="form-control w-full max-w-xs text-black">
             <label className="label">
               {" "}
               <span className="label-text">password</span>
@@ -102,7 +102,7 @@ const Login = () => {
                   message: "Password at least six characters",
                 },
               })}
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs bg-white text-black"
             />
             <label onClick={handleModal} className="label">
               {" "}
@@ -115,8 +115,8 @@ const Login = () => {
           </div>
 
           <input
-            className="btn bg-[#f97316] hover:bg-orange-700 border-none w-full mt-3"
-           value="Login"
+            className="btn bg-[#f97316] hover:bg-orange-700 border-none w-full mt-3 text-white"
+            value="Login"
             type="submit"
           />
         </form>

@@ -7,13 +7,22 @@ import Loading from "../../Loading/Loading";
 const Bachelors = () => {
   const [loading, setLoading] = useState([]);
   const [bachelorsHome, setBachelorsHome] = useState([]);
-  const { location,setLocation,district, setDistrict,type, setType,submitOn } = useContext(SearchContext);
- 
+  const {
+    location,
+    setLocation,
+    district,
+    setDistrict,
+    type,
+    setType,
+    submitOn,
+  } = useContext(SearchContext);
 
   useEffect(() => {
     setLoading(true);
     setBachelorsHome([]);
-    fetch(`http://localhost:5001/homes?location=${location}&&district=${district}&&type=${type}`)
+    fetch(
+      `https://rent-home-server.vercel.app/homes?location=${location}&&district=${district}&&type=${type}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);

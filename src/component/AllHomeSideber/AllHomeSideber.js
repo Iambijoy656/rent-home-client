@@ -19,7 +19,9 @@ const AllHomeSideber = () => {
   const { data: locations = [] } = useQuery({
     queryKey: ["location"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5001/commonLocation");
+      const res = await fetch(
+        "https://rent-home-server.vercel.app/commonLocation"
+      );
       const data = await res.json();
       return data;
     },
@@ -29,7 +31,9 @@ const AllHomeSideber = () => {
   const { data: districts = [] } = useQuery({
     queryKey: ["districts"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5001/commonDistrict");
+      const res = await fetch(
+        "https://rent-home-server.vercel.app/commonDistrict"
+      );
       const data = await res.json();
       return data;
     },
@@ -70,7 +74,7 @@ const AllHomeSideber = () => {
           <select
             onChange={(e) => setLocation(e.target.value)}
             name="location"
-            className="select border-orange-500 w-full border-2 max-w-xs my-2 focus:outline-none"
+            className="select border-orange-500 w-full border-2 max-w-xs my-2 focus:outline-none bg-white text-black"
           >
             <option disabled selected>
               Location
@@ -84,7 +88,7 @@ const AllHomeSideber = () => {
           <select
             onChange={(e) => setDistrict(e.target.value)}
             name="district"
-            className="select border-orange-500  w-full border-2 max-w-xs my-2 focus:outline-none"
+            className="select border-orange-500  w-full border-2 max-w-xs my-2 focus:outline-none bg-white text-black"
           >
             <option disabled selected>
               District
@@ -99,7 +103,7 @@ const AllHomeSideber = () => {
           <select
             onChange={(e) => setType(e.target.value)}
             name="type"
-            className="select border-orange-500 h w-full border-2 max-w-xs my-2 focus:outline-none"
+            className="select border-orange-500 h w-full border-2 max-w-xs my-2 focus:outline-none bg-white text-black"
           >
             <option disabled selected>
               Type

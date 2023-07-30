@@ -10,7 +10,9 @@ const LatestBachelorsHome = () => {
   const { data: latestBachelosHomes = [], isLoading } = useQuery({
     queryKey: ["latestBachelosHomes"],
     queryFn: async () => {
-      const response = await fetch("http://localhost:5001/latestBachelosHomes");
+      const response = await fetch(
+        "https://rent-home-server.vercel.app/latestBachelosHomes"
+      );
       const data = await response.json();
       return data;
     },
@@ -19,7 +21,7 @@ const LatestBachelorsHome = () => {
   // const { data: bachelosHomes = []} = useQuery({
   //   queryKey: ["bachelosHomes"],
   //   queryFn: async () => {
-  //     const response = await fetch("http://localhost:5001/bachelosHomes");
+  //     const response = await fetch("https://rent-home-server.vercel.app/bachelosHomes");
   //     const data = await response.json();
   //     return data;
   //   }

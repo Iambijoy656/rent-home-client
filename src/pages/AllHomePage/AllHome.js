@@ -7,7 +7,7 @@
 //   useEffect(() => {
 //     setLoading(true);
 
-//     fetch(`http://localhost:5001/homes`)
+//     fetch(`https://rent-home-server.vercel.app/homes`)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         setLoading(false);
@@ -15,8 +15,6 @@
 //         console.log(data)
 //       });
 //   }, []);
-
-
 
 //   return (
 //     <section>

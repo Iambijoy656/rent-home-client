@@ -16,7 +16,7 @@ const FamilyHomeCard = ({ home }) => {
     description,
   } = home;
   return (
-    <div className="card bg-base-100 rounded-none shadow-xl">
+    <div className="card bg-slate-50  rounded-none shadow-xl">
       <figure>
         <img className="h-64 w-full " src={image[0]} alt="homes" />
       </figure>

@@ -20,7 +20,7 @@ const Family = () => {
     setLoading(true);
     setFamilyHome([]);
     fetch(
-      `http://localhost:5001/homes?location=${location}&&district=${district}&&type=${type}`
+      `https://rent-home-server.vercel.app/homes?location=${location}&&district=${district}&&type=${type}`
     )
       .then((response) => response.json())
       .then((data) => {

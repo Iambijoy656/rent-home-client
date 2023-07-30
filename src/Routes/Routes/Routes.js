@@ -18,6 +18,10 @@ import DashboardLayout from "../../Layout/DashboardLayout";
 import MyRentHome from "../../pages/Dashboard/MyRentHome/MyRentHome";
 import MyProfile from "../../pages/Dashboard/MyProfile/MyProfile";
 import Payment from "../../pages/Dashboard/Payment/Payment";
+import AllUsers from "../../pages/Dashboard/AllUsers/AllUsers";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import AddHome from "../../pages/Dashboard/AddHome/AddHome";
+import OwnerRoute from "../OwnerRoute/OwnerRoute";
 
 export const router = createBrowserRouter([
   {
@@ -53,13 +57,17 @@ export const router = createBrowserRouter([
         path: "/bachelorsHomeDetails/:id",
         element: <BachelorsHomeDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5001/bachelosHomesDetails/${params.id}`),
+          fetch(
+            `https://rent-home-server.vercel.app/bachelosHomesDetails/${params.id}`
+          ),
       },
       {
         path: "/familyHomeDetails/:id",
         element: <FamilyHomeDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5001/familyHomesDetails/${params.id}`),
+          fetch(
+            `https://rent-home-server.vercel.app/familyHomesDetails/${params.id}`
+          ),
       },
     ],
   },
@@ -110,7 +118,23 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5001/home/${params.id}`),
+          fetch(`https://rent-home-server.vercel.app/home/${params.id}`),
+      },
+      {
+        path: "/dashboard/allUsers",
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/addhome",
+        element: (
+          <OwnerRoute>
+            <AddHome></AddHome>
+          </OwnerRoute>
+        ),
       },
     ],
   },

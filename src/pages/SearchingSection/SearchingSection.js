@@ -26,7 +26,7 @@ const SearchingSection = () => {
 
     const query = { address, district, type };
 
-    fetch("http://localhost:5001/filterHome", {
+    fetch("https://rent-home-server.vercel.app/filterHome", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,9 @@ const SearchingSection = () => {
   const { data: locations = [] } = useQuery({
     queryKey: ["location"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5001/commonLocation");
+      const res = await fetch(
+        "https://rent-home-server.vercel.app/commonLocation"
+      );
       const data = await res.json();
       return data;
     },
@@ -53,7 +55,9 @@ const SearchingSection = () => {
   const { data: districts = [] } = useQuery({
     queryKey: ["districts"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5001/commonDistrict");
+      const res = await fetch(
+        "https://rent-home-server.vercel.app/commonDistrict"
+      );
       const data = await res.json();
       return data;
     },
@@ -61,11 +65,11 @@ const SearchingSection = () => {
 
   return (
     <form className="py-6 bg-[#f2f6f7] text-gray-500 flex justify-around flex-col">
-      <div className="container mx-auto grid lg:grid-cols-3  md:grid-cols-2 sm:grid-cols-1 gap-4 justify-around p-4 text-center md:p-10 lg:flex-row">
+      <div className="container mx-auto grid lg:grid-cols-3   md:grid-cols-2 sm:grid-cols-1 gap-4 justify-around p-4 text-center md:p-10 lg:flex-row">
         <select
           onChange={(e) => setLocation(e.target.value)}
           name="location"
-          className="select rounded-none select-lg w-full px-12 max-w-xl"
+          className="select rounded-none select-lg w-full px-12 max-w-xl bg-white"
         >
           <option disabled selected>
             Location
@@ -79,7 +83,7 @@ const SearchingSection = () => {
         <select
           onChange={(e) => setDistrict(e.target.value)}
           name="district"
-          className="select select-lg w-full px-12 max-w-xl rounded-none"
+          className="select select-lg w-full px-12 max-w-xl rounded-none bg-white"
         >
           <option defaultValue="" disabled selected>
             District
@@ -95,7 +99,7 @@ const SearchingSection = () => {
           required
           onChange={(e) => setType(e.target.value)}
           name="type"
-          className="select select-lg w-full px-10 max-w-xl rounded-none"
+          className="select select-lg w-full px-10 max-w-xl rounded-none bg-white"
         >
           <option defaultValue="" disabled selected>
             Type

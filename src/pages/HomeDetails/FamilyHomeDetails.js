@@ -8,7 +8,7 @@ const FamilyHomeDetails = () => {
     _id,
     image,
     address,
-    available,
+    email,
     district,
     date,
     rent,
@@ -153,6 +153,9 @@ const FamilyHomeDetails = () => {
                     <span className="font-semibold"> Room type: </span>
                     {room_type}
                   </p>
+                  <p>
+                    <span className="font-semibold">Name:</span> {owner_name}
+                  </p>
                 </div>
 
                 <div className="w-full mt-2 text-gray-500 flex  justify-between items-center">
@@ -160,8 +163,9 @@ const FamilyHomeDetails = () => {
                     <span className="font-semibold">Owner No: </span>
                     {owner_number}
                   </p>
+
                   <p>
-                    <span className="font-semibold">Name:</span> {owner_name}
+                    <span className="font-semibold">Email:</span> {email}
                   </p>
                 </div>
               </div>

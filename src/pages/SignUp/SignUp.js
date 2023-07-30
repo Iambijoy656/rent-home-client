@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -51,31 +51,30 @@ const SignUp = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-                const userForDB = {
-                    name: user?.displayName,
-                    email: user?.email,
-                    role: "renter",
+        const userForDB = {
+          name: user?.displayName,
+          email: user?.email,
+          role: "renter",
+        };
+        console.log(userForDB);
 
-                };
-                console.log(userForDB);
-
-                fetch(`http://localhost:5001/users`, {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json",
-                    },
-                    body: JSON.stringify(userForDB),
-                })
-                    .then((res) => res.json())
-                    .then((data) => {
-                        if (data.message) {
-                            navigate("/");
-                        }
-                        if (data.acknowledged) {
-                            toast.success("login successfully");
-                            navigate("/");
-                        }
-                    });
+        fetch(`https://rent-home-server.vercel.app/users`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userForDB),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.message) {
+              navigate("/");
+            }
+            if (data.acknowledged) {
+              toast.success("login successfully");
+              navigate("/");
+            }
+          });
       })
 
       .catch((error) => console.error(error));
@@ -94,7 +93,7 @@ const SignUp = () => {
 
   const userSaved = (name, email, role) => {
     const user = { name, email, role };
-    fetch("http://localhost:5001/users", {
+    fetch("https://rent-home-server.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -113,7 +112,7 @@ const SignUp = () => {
       <div className="w-96 p-8 shadow-2xl">
         <h2 className="text-3xl text-center font-bold">SignUP</h2>
         <form onSubmit={handleSubmit(handleSignUp)}>
-          <div className="form-control w-full max-w-xs">
+          <div className="form-control w-full max-w-xs text-black bg-white">
             <label className="label">
               {" "}
               <span className="label-text">Name</span>
@@ -121,32 +120,32 @@ const SignUp = () => {
             <input
               type="text"
               {...register("name", { required: "Name is required" })}
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs bg-white"
             />
             {errors.name && (
               <small className="text-error pt-2">{errors.name.message}</small>
             )}
           </div>
-          <div className="form-control w-full max-w-xs">
+          <div className="form-control w-full max-w-xs bg-white text-black">
             <label className="label">
               {" "}
               <span className="label-text">Select Role</span>
             </label>
             <select
               {...register("role")}
-              className="select select-ghost select-bordered w-full max-w-xs"
+              className="select select-ghost select-bordered w-full max-w-xs bg-white"
             >
               <option disabled selected>
                 Owner Or Renter?
               </option>
-              <option>owner</option>
-              <option>renter</option>
+              <option className="text-black bg-white">owner</option>
+              <option className="text-black bg-white">renter</option>
             </select>
-            {errors.name && (
-              <small className="text-error pt-2">{errors.name.message}</small>
+            {errors.role && (
+              <small className="text-error pt-2">{errors.role.message}</small>
             )}
           </div>
-          <div className="form-control w-full max-w-xs">
+          <div className="form-control w-full max-w-xs text-black">
             <label className="label">
               {" "}
               <span className="label-text">Email</span>
@@ -154,14 +153,14 @@ const SignUp = () => {
             <input
               type="email"
               {...register("email", { required: "Email is required" })}
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs bg-white "
             />
             {errors.email && (
               <small className="text-error mt-2">{errors.email.message}</small>
             )}
           </div>
 
-          <div className="form-control w-full max-w-xs">
+          <div className="form-control w-full max-w-xs text-black bg-white">
             <label className="label">
               {" "}
               <span className="label-text">Password</span>
@@ -184,7 +183,7 @@ const SignUp = () => {
                     "Your password must contain at least one Special Characters.",
                 },
               })}
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs bg-white"
             />
             {errors.password && (
               <small className="text-error mt-2">
@@ -193,7 +192,7 @@ const SignUp = () => {
             )}
           </div>
           <input
-            className="btn bg-[#f97316] border-none hover:bg-orange-600 w-full my-3"
+            className="btn bg-[#f97316] border-none hover:bg-orange-600 w-full my-3 text-white"
             value="Sign Up"
             type="submit"
           />
