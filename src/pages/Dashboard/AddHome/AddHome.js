@@ -1,26 +1,70 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const AddHome = () => {
   const { user } = useContext(AuthContext);
+  const [image1, setImage1] = useState(null);
+  const [image2, setImage2] = useState(null);
+  const [image3, setImage3] = useState(null);
+
+  const imageHostKey = process.env.REACT_APP_imgbb_key;
 
   const handleAddHome = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
-    // const gender= form.gender.value;
+    const gender = form.gender.value;
     const address = form.address.value;
     const district = form.district.value;
     const room_type = form.type.value;
     const available = form.available.value;
-    // const need_room_mates= form.need_room_mates.value;
-    // const owner_number = form.number.value;
-    // const date= form.date.value;
-    // const rent = form.rent.value;
-    // const description = form.description.value;
+    const need_room_mates = form.need_room_mates.value;
+    const owner_number = form.number.value;
+    const date = form.date.value;
+    const rent = form.rent.value;
+    const description = form.description.value;
+    const img1 = image1[0];
+    const img2 = image2[0];
+    const img3 = image3[0];
+  
 
-    console.log(name, email, address, district, available, room_type);
+    // console.log(
+    //   name,
+    //   email,
+    //   address,
+    //   district,
+    //   available,
+    //   room_type,
+    //   gender,
+    //   need_room_mates,
+    //   owner_number,
+    //   date,
+    //   description,
+    //   rent,
+    //   img1
+    // );
+    const images = [img1, img2, img3]; 
+
+    const formData = new FormData();
+    images.forEach((image, index) => {
+      formData.append(`image${index + 1}`, image);
+    });
+    
+    const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imgData) => {
+        console.log(imgData);
+      });
+
+
+
+
+
 
     // const homeDetails = {
     //   name,
@@ -151,7 +195,7 @@ const AddHome = () => {
           </div>
         </div>
 
-        {/* <div className="my-2 flex justify-center items-start">
+        <div className="my-2 flex justify-center items-start">
           <div class="w-full mx-2 mt-4 md:mt-0">
             <label className="block mb-2 text-sm font-medium text-black">
               gender
@@ -176,7 +220,6 @@ const AddHome = () => {
               className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md  focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
               type="number"
               placeholder="need room mates"
-             
             />
           </div>
         </div>
@@ -248,7 +291,9 @@ const AddHome = () => {
               <span className="label-text">image1</span>
             </label>
             <input
+              onChange={(e) => setImage1(e.target.files)}
               type="file"
+              name="img1"
               className="input  w-full max-w-xs bg-white text-black"
               required
             />
@@ -260,6 +305,7 @@ const AddHome = () => {
               <span className="label-text">image2</span>
             </label>
             <input
+              onChange={(e) => setImage2(e.target.files)}
               type="file"
               className="input  w-full max-w-xs bg-white text-black"
               required
@@ -272,6 +318,7 @@ const AddHome = () => {
               <span className="label-text">Image3</span>
             </label>
             <input
+              onChange={(e) => setImage3(e.target.files)}
               type="file"
               className="input  w-full max-w-xs bg-white text-black"
               required
@@ -289,7 +336,7 @@ const AddHome = () => {
             class="block w-full h-40 px-4 py-2 text-gray-700 bg-white border bottom-1"
             required
           ></textarea>
-        </div> */}
+        </div>
 
         <div className="flex justify-center mt-6">
           <button className="block px-5 py-3 ml-3  font-bold text-white bg-orange-500 rounded hover:bg-orange-600 hover:transition ease-in-out duration-150">
