@@ -3,9 +3,15 @@ import { AuthContext } from "../../../context/AuthProvider";
 
 const AddHome = () => {
   const { user } = useContext(AuthContext);
-  const [image1, setImage1] = useState(null);
-  const [image2, setImage2] = useState(null);
-  const [image3, setImage3] = useState(null);
+  const [img1, setImg1] = useState(null);
+  const [img2, setImg2] = useState(null);
+  const [img3, setImg3] = useState(null);
+  // const [uploadedImageUrls, setUploadedImageUrls] = useState([]);
+
+  const handleImageChange = (event, setImage) => {
+    const file = event.target.files[0];
+    setImage(file);
+  };
 
   const imageHostKey = process.env.REACT_APP_imgbb_key;
 
@@ -24,10 +30,7 @@ const AddHome = () => {
     const date = form.date.value;
     const rent = form.rent.value;
     const description = form.description.value;
-    const img1 = image1[0];
-    const img2 = image2[0];
-    const img3 = image3[0];
-  
+   
 
     // console.log(
     //   name,
@@ -44,13 +47,12 @@ const AddHome = () => {
     //   rent,
     //   img1
     // );
-    const images = [img1, img2, img3]; 
-
     const formData = new FormData();
-    images.forEach((image, index) => {
-      formData.append(`image${index + 1}`, image);
-    });
-    
+
+    if (img1) formData.append("image1", img1);
+    if (img2) formData.append("image2", img2);
+    if (img3) formData.append("image3", img3);
+    console.log(formData);
     const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
     fetch(url, {
       method: "POST",
@@ -60,11 +62,6 @@ const AddHome = () => {
       .then((imgData) => {
         console.log(imgData);
       });
-
-
-
-
-
 
     // const homeDetails = {
     //   name,
@@ -291,8 +288,9 @@ const AddHome = () => {
               <span className="label-text">image1</span>
             </label>
             <input
-              onChange={(e) => setImage1(e.target.files)}
+             onChange={(e) => handleImageChange(e, setImg1)}
               type="file"
+              multiple
               name="img1"
               className="input  w-full max-w-xs bg-white text-black"
               required
@@ -305,7 +303,7 @@ const AddHome = () => {
               <span className="label-text">image2</span>
             </label>
             <input
-              onChange={(e) => setImage2(e.target.files)}
+              onChange={(e) => handleImageChange(e, setImg2)}
               type="file"
               className="input  w-full max-w-xs bg-white text-black"
               required
@@ -318,7 +316,7 @@ const AddHome = () => {
               <span className="label-text">Image3</span>
             </label>
             <input
-              onChange={(e) => setImage3(e.target.files)}
+               onChange={(e) => handleImageChange(e, setImg3)} 
               type="file"
               className="input  w-full max-w-xs bg-white text-black"
               required
