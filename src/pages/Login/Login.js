@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const {
@@ -41,11 +42,34 @@ const Login = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        navigate(from, { replace: true });
+        const userForDB = {
+          name: user?.displayName,
+          email: user?.email,
+          role: "renter",
+        };
+       
+
+        fetch(`https://rent-home-server.vercel.app/users`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userForDB),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.message) {
+              navigate("/");
+            }
+            if (data.acknowledged) {
+              toast.success("login successfully");
+              navigate("/");
+            }
+          });
       })
+
       .catch((error) => console.error(error));
   };
-
   const handleModal = async () => {
     const { value: email } = await Swal.fire({
       title: "Input email address",

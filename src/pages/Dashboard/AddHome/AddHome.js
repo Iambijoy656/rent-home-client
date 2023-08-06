@@ -1,89 +1,102 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
+import toast from "react-hot-toast";
 
 const AddHome = () => {
   const { user } = useContext(AuthContext);
   const [img1, setImg1] = useState(null);
   const [img2, setImg2] = useState(null);
   const [img3, setImg3] = useState(null);
-  // const [uploadedImageUrls, setUploadedImageUrls] = useState([]);
 
-  const handleImageChange = (event, setImage) => {
-    const file = event.target.files[0];
-    setImage(file);
-  };
+  const [type, setType] = useState("");
 
   const imageHostKey = process.env.REACT_APP_imgbb_key;
 
-  const handleAddHome = (event) => {
+  const handleAddHome = async (event) => {
     event.preventDefault();
     const form = event.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const gender = form.gender.value;
-    const address = form.address.value;
-    const district = form.district.value;
-    const room_type = form.type.value;
-    const available = form.available.value;
-    const need_room_mates = form.need_room_mates.value;
-    const owner_number = form.number.value;
-    const date = form.date.value;
-    const rent = form.rent.value;
-    const description = form.description.value;
-   
+    const owner_name = form.name?.value;
+    const email = form.email?.value;
+    const gender = form.gender?.value;
+    const type = form.type?.value;
+    const address = form.address?.value;
+    const district = form.district?.value;
+    const room_type = form.roomType?.value;
+    const available = form.available?.value;
+    const need_room_mates = form.need_room_mates?.value;
+    const owner_number = form.number?.value;
+    const date = form.date?.value;
+    const rent = form.rent?.value;
+    const description = form.description?.value;
 
-    // console.log(
-    //   name,
-    //   email,
-    //   address,
-    //   district,
-    //   available,
-    //   room_type,
-    //   gender,
-    //   need_room_mates,
-    //   owner_number,
-    //   date,
-    //   description,
-    //   rent,
-    //   img1
-    // );
-    const formData = new FormData();
+    if (description.length < 160) {
+      return toast.error("description minimum should be 160 characters");
+    }
 
-    if (img1) formData.append("image1", img1);
-    if (img2) formData.append("image2", img2);
-    if (img3) formData.append("image3", img3);
-    console.log(formData);
-    const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
-    fetch(url, {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((imgData) => {
-        console.log(imgData);
+    const imageUrls = [];
+
+    const uploadImage = async (image) => {
+      if (!image) return null;
+      const formData = new FormData();
+      formData.append("image", image);
+      const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
+      const res = await fetch(url, {
+        method: "POST",
+        body: formData,
       });
+      const imgData = await res.json();
+      if (imgData.success) {
+        return imgData.data.url;
+      }
+      return null;
+    };
 
-    // const homeDetails = {
-    //   name,
-    //   email,
-    // };
+    try {
+      const img1Url = await uploadImage(img1);
+      const img2Url = await uploadImage(img2);
+      const img3Url = await uploadImage(img3);
 
-    // fetch('https://one-studio-server.vercel.app/services', {
-    //     method: 'POST',
-    //     headers: {
-    //         'content-type': 'application/json'
-    //     },
-    //     body: JSON.stringify(service)
-    // })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         console.log(data)
-    //         if (data.acknowledged) {toast.success('Add Service Successfully')
-    //             form.reset()
+      if (img1Url) imageUrls.push(img1Url);
+      if (img2Url) imageUrls.push(img2Url);
+      if (img3Url) imageUrls.push(img3Url);
 
-    //         }
-    //     })
-    //     .catch(error => console.error(error))
+      const homeDetails = {
+        image: imageUrls,
+        date,
+        need_room_mates,
+        gender,
+        type,
+        room_type,
+        rent,
+        address,
+        available,
+        district,
+        owner_name,
+        owner_number,
+        description,
+        email,
+      };
+
+      fetch("https://rent-home-server.vercel.app/add-home", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(homeDetails),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.acknowledged) {
+            toast.success("Add Home Successfully");
+            form.reset();
+          }
+        })
+        .catch((error) => console.error(error));
+    } catch (error) {
+      console.error(error);
+      console.log(error);
+    }
   };
 
   return (
@@ -164,6 +177,7 @@ const AddHome = () => {
                 Type
               </label>
               <select
+                onChange={(e) => setType(e.target.value)}
                 id="type"
                 name="type"
                 required
@@ -192,34 +206,37 @@ const AddHome = () => {
           </div>
         </div>
 
-        <div className="my-2 flex justify-center items-start">
-          <div class="w-full mx-2 mt-4 md:mt-0">
-            <label className="block mb-2 text-sm font-medium text-black">
-              gender
-            </label>
+        {type === "family" ? (
+          ""
+        ) : (
+          <div className="my-2 flex justify-center items-start">
+            <div class="w-full mx-2 mt-4 md:mt-0">
+              <label className="block mb-2 text-sm font-medium text-black">
+                gender
+              </label>
 
-            <input
-              name="gender"
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md  focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              type="text"
-              placeholder="gender"
-              required
-            />
+              <input
+                name="gender"
+                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md  focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                type="text"
+                placeholder="gender"
+              />
+            </div>
+
+            <div class="w-full mx-2 mt-4 md:mt-0">
+              <label className="block mb-2 text-sm font-medium text-black">
+                Need Room Mates(if it is bechalors home)
+              </label>
+
+              <input
+                name="need_room_mates"
+                className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md  focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                type="number"
+                placeholder="need room mates"
+              />
+            </div>
           </div>
-
-          <div class="w-full mx-2 mt-4 md:mt-0">
-            <label className="block mb-2 text-sm font-medium text-black">
-              Need Room Mates(if it is bechalors home)
-            </label>
-
-            <input
-              name="need_room_mates"
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md  focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              type="number"
-              placeholder="need room mates"
-            />
-          </div>
-        </div>
+        )}
 
         <div className="my-2 flex justify-center items-start">
           <div class="w-full mx-2 mt-4 md:mt-0">
@@ -288,7 +305,7 @@ const AddHome = () => {
               <span className="label-text">image1</span>
             </label>
             <input
-             onChange={(e) => handleImageChange(e, setImg1)}
+              onChange={(e) => setImg1(e.target.files[0])}
               type="file"
               multiple
               name="img1"
@@ -303,7 +320,7 @@ const AddHome = () => {
               <span className="label-text">image2</span>
             </label>
             <input
-              onChange={(e) => handleImageChange(e, setImg2)}
+              onChange={(e) => setImg2(e.target.files[0])}
               type="file"
               className="input  w-full max-w-xs bg-white text-black"
               required
@@ -316,7 +333,7 @@ const AddHome = () => {
               <span className="label-text">Image3</span>
             </label>
             <input
-               onChange={(e) => handleImageChange(e, setImg3)} 
+              onChange={(e) => setImg3(e.target.files[0])}
               type="file"
               className="input  w-full max-w-xs bg-white text-black"
               required

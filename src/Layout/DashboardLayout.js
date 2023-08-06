@@ -4,11 +4,13 @@ import { AuthContext } from "../context/AuthProvider";
 import Navber from "../Shared/Navber/Navber";
 import useAdmin from "../hooks/useAdmin";
 import useOwner from "../hooks/useOwner";
+import useRenter from "../hooks/useRenter";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user.email);
   const [isOwner] = useOwner(user.email);
+  const [isRenter] = useRenter(user.email);
   return (
     <div>
       <div className="border-b bg-white">
@@ -26,9 +28,13 @@ const DashboardLayout = () => {
         <div className="drawer-side border border-l-0  bg-white">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
           <ul className="menu p-4 text-black lg:bg-none w-80  bg-white">
+         {
+          isRenter &&(
             <li>
-              <Link to="/dashboard/myRentHome">My Rent Home</Link>
-            </li>
+            <Link to="/dashboard/myRentHome">My Rent Home</Link>
+          </li>
+          )
+         }
             <li>
               <Link to="/dashboard/myProfile">MyProfile</Link>
             </li>

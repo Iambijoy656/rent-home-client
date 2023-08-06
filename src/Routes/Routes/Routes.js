@@ -22,6 +22,7 @@ import AllUsers from "../../pages/Dashboard/AllUsers/AllUsers";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import AddHome from "../../pages/Dashboard/AddHome/AddHome";
 import OwnerRoute from "../OwnerRoute/OwnerRoute";
+import RenterRoute from "../RenterRoute/RenterRoute";
 
 export const router = createBrowserRouter([
   {
@@ -104,7 +105,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/myRentHome",
-        element: <MyRentHome></MyRentHome>,
+        element: (
+          <RenterRoute>
+            <MyRentHome></MyRentHome>
+          </RenterRoute>
+        ),
       },
       {
         path: "/dashboard/myProfile",
