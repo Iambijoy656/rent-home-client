@@ -11,8 +11,7 @@ const LatestBachelorsHome = () => {
     queryKey: ["latestBachelosHomes"],
     queryFn: async () => {
       const response = await fetch(
-        "https://rent-home-server.vercel.app/latestBachelosHomes"
-      );
+        "https://rent-home-server.vercel.app/latestBachelosHomes");
       const data = await response.json();
       return data;
     },

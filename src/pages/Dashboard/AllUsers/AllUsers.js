@@ -23,6 +23,18 @@ const AllUsers = () => {
           refetch()
         }
       });
+  }; 
+   const handleDeleteUser = (email) => {
+    fetch(`https://rent-home-server.vercel.app/user-delete/${email}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          refetch();
+          toast.success(`User deleted successfully`);
+        }
+      });
   };
 
   return (
@@ -58,7 +70,7 @@ const AllUsers = () => {
                   )}
                 </td>
                 <td className="bg-white">
-                  <button className="btn btn-xs btn-outline btn-error">
+                  <button onClick={()=> handleDeleteUser(user.email)} className="btn btn-xs btn-outline btn-error">
                     Delete
                   </button>
                 </td>

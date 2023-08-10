@@ -61,9 +61,9 @@ const BachelorsHomeCard = ({ home }) => {
             <span className="font-semibold">Name:</span> {owner_name}
           </p>
         </div>
-        <p className="text-gray-500 mt-2">
+        <p className="text-gray-500 mt-2 text-justify">
           {" "}
-          <span className="font-semibold">Description:</span>
+          <span className="font-semibold text-justify">Description:</span>
           {description.length > 170
             ? `${description.slice(0, 170)}...`
             : description}

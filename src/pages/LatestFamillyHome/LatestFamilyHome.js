@@ -10,9 +10,7 @@ const LatestFamilyHome = () => {
   const { data: latestFAmilyHomes = [], isLoading } = useQuery({
     queryKey: ["latestFAmilyHomes"],
     queryFn: async () => {
-      const response = await fetch(
-        "https://rent-home-server.vercel.app/latestFamilyHomes"
-      );
+      const response = await fetch("https://rent-home-server.vercel.app/latestFamilyHomes");
       const data = await response.json();
       return data;
     },

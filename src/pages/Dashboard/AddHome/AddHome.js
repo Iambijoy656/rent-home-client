@@ -29,6 +29,8 @@ const AddHome = () => {
     const rent = form.rent?.value;
     const description = form.description?.value;
 
+    console.log(date);
+
     if (description.length < 160) {
       return toast.error("description minimum should be 160 characters");
     }
@@ -86,7 +88,6 @@ const AddHome = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.acknowledged) {
             toast.success("Add Home Successfully");
             form.reset();
@@ -276,8 +277,8 @@ const AddHome = () => {
 
             <input
               name="date"
-              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md  focus:border-blue-400 focus:ring-blue-300 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              type="text"
+              className="block w-full px-4 py-2 text-gray-700 bg-gray-200"
+              type="date"
               placeholder="15-01-2023"
               required
             />
@@ -348,7 +349,7 @@ const AddHome = () => {
 
           <textarea
             name="description"
-            class="block w-full h-40 px-4 py-2 text-gray-700 bg-white border bottom-1"
+            class="block w-full h-40 px-4 py-2 text-gray-700 bg-white border bottom-1 "
             required
           ></textarea>
         </div>
