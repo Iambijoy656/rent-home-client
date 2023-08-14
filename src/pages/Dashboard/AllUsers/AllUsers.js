@@ -14,25 +14,26 @@ const AllUsers = () => {
 
   const handleMakeAdmin = (id) => {
     fetch(`https://rent-home-server.vercel.app/users/admin/${id}`, {
-      method: "PUT",
+      method: "PATCH",
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
-          toast.success("Make admin successfully")
-          refetch()
+          toast.success("Make admin successfully");
+          refetch();
         }
       });
-  }; 
-   const handleDeleteUser = (email) => {
+  };
+
+  const handleDeleteUser = (email) => {
     fetch(`https://rent-home-server.vercel.app/user-delete/${email}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
-          refetch();
           toast.success(`User deleted successfully`);
+          refetch();
         }
       });
   };
@@ -70,7 +71,10 @@ const AllUsers = () => {
                   )}
                 </td>
                 <td className="bg-white">
-                  <button onClick={()=> handleDeleteUser(user.email)} className="btn btn-xs btn-outline btn-error">
+                  <button
+                    onClick={() => handleDeleteUser(user.email)}
+                    className="btn btn-xs btn-outline btn-error"
+                  >
                     Delete
                   </button>
                 </td>

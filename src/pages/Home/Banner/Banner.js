@@ -22,7 +22,7 @@ const Banner = () => {
               your budget.
             </p>
 
-            <Link to="/allHome">
+            <Link  to="">
               {" "}
               <PrimaryButton>Find House</PrimaryButton>
             </Link>

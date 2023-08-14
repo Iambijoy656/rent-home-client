@@ -22,7 +22,7 @@ const AddHome = () => {
     const address = form.address?.value;
     const district = form.district?.value;
     const room_type = form.roomType?.value;
-    const available = form.available?.value;
+    // const available = form.available?.value;
     const need_room_mates = form.need_room_mates?.value;
     const owner_number = form.number?.value;
     const date = form.date?.value;
@@ -71,7 +71,7 @@ const AddHome = () => {
         room_type,
         rent,
         address,
-        available,
+        // available,
         district,
         owner_name,
         owner_number,
@@ -192,7 +192,7 @@ const AddHome = () => {
               </select>
             </div>
           </div>
-          <div class="w-full mx-2 mt-4 md:mt-0">
+          {/* <div class="w-full mx-2 mt-4 md:mt-0">
             <label className="block mb-2 text-sm font-medium text-black">
               Abailable
             </label>
@@ -204,7 +204,7 @@ const AddHome = () => {
               placeholder="true"
               required
             />
-          </div>
+          </div> */}
         </div>
 
         {type === "family" ? (
