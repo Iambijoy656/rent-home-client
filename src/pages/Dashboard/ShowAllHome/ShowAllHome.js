@@ -7,7 +7,7 @@ const ShowAllHome = () => {
   const { data: allHomes = [], refetch } = useQuery({
     queryKey: ["allHomes"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5001/allHomes");
+      const res = await fetch("https://rent-home-server.vercel.app/allHomes");
       const data = await res.json();
       console.log(data);
       return data;
@@ -16,7 +16,7 @@ const ShowAllHome = () => {
 
   //Handle Delete home from DB
   const handleDelete = (home) => {
-    fetch(`http://localhost:5001/delete-home/${home._id}`, {
+    fetch(`https://rent-home-server.vercel.app/delete-home/${home._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

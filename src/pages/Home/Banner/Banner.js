@@ -21,11 +21,11 @@ const Banner = () => {
               queries. The best thing is you will the best house for rent within
               your budget.
             </p>
-
-            <Link  to="">
+{/* 
+            <Link  className="findHouse">
               {" "}
               <PrimaryButton>Find House</PrimaryButton>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

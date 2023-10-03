@@ -46,19 +46,15 @@ const AuthProvider = ({ children }) => {
   //     return updateProfile(auth.currentUser, userInfo);
   // };
 
-
   const updateUser = (userInfo) => {
     return updateProfile(auth.currentUser, userInfo);
   };
 
-
-   // verify email
-   const verifyEmail = () => {
-    setLoading(true)
-    return sendEmailVerification(auth.currentUser)
-}
-
-
+  // verify email
+  const verifyEmail = () => {
+    setLoading(true);
+    return sendEmailVerification(auth.currentUser);
+  };
 
   const logOut = () => {
     setLoading(true);
@@ -67,7 +63,9 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      if (currentUser === null || currentUser.emailVerified) {
+        setUser(currentUser);
+      }
       setLoading(false);
     });
 

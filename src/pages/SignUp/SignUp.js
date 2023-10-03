@@ -84,7 +84,7 @@ const SignUp = () => {
   const handleVerifyEmail = () => {
     verifyEmail()
       .then(() => {
-        toast.success("Please Check your Email and verify ");
+        toast.success("Please Check your Email and verify for getting our services ");
       })
       .catch((error) => {
         console.error(error);
@@ -103,7 +103,7 @@ const SignUp = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log("save data", data);
-        navigate("/");
+        navigate("/login");
       });
   };
 

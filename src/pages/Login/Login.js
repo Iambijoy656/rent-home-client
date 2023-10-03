@@ -24,8 +24,14 @@ const Login = () => {
     signIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
+        console.log(user)
         setLoginError("");
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true })
+        if (user.emailVerified) {
+            navigate(from, { replace: true })
+        }else{
+          toast.error("Your Email is not verifird. please verify email")
+        }
       })
       .catch((error) => {
         const errorMessage = error.message.slice(22, error.message.length - 2);

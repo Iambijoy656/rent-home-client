@@ -1,13 +1,14 @@
 // import React, { useEffect, useState } from "react";
-// import { useLocation } from "react-router-dom";
+// import Loading from "../Loading/Loading";
 
-// const AllHome = (props) => {
+
+// const AllHome = () => {
 //   const [loading, setLoading] = useState([]);
 //   const [homes, setHomes] = useState([]);
 //   useEffect(() => {
 //     setLoading(true);
 
-//     fetch(`https://rent-home-server.vercel.app/homes`)
+//     fetch(`https://rent-home-server.vercel.app/allHomes`)
 //       .then((response) => response.json())
 //       .then((data) => {
 //         setLoading(false);
@@ -22,8 +23,8 @@
 //         <div className="grid items-start grid-cols-3 gap-4 md:grid-cols-2 lg:grid-cols-3">
 //         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4  ">
 //         {loading ? <Loading></Loading> : ""}
-//         {bachelorsHome.length > 0 &&
-//           bachelorsHome.map((home) => (
+//         {homes.length > 0 &&
+//           homes.map((home) => (
 //             <BachelorsHomeCard key={home._id} home={home}></BachelorsHomeCard>
 //           ))}
 //       </div>

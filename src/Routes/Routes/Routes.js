@@ -25,6 +25,7 @@ import OwnerRoute from "../OwnerRoute/OwnerRoute";
 import RenterRoute from "../RenterRoute/RenterRoute";
 import MyHomeForRent from "../../pages/Dashboard/MyHomeForRent/MyHomeForRent";
 import ShowAllHome from "../../pages/Dashboard/ShowAllHome/ShowAllHome";
+import BookeHome from "../../pages/Dashboard/BookedHome/BookeHome";
 
 export const router = createBrowserRouter([
   {
@@ -155,11 +156,18 @@ export const router = createBrowserRouter([
         path: "/dashboard/myHomeForRent",
         element: (
           <OwnerRoute>
-           <MyHomeForRent></MyHomeForRent>
+            <MyHomeForRent></MyHomeForRent>
           </OwnerRoute>
         ),
       },
-      
+      {
+        path: "/dashboard/bookedHome",
+        element: (
+          <OwnerRoute>
+            <BookeHome></BookeHome>
+          </OwnerRoute>
+        ),
+      },
     ],
   },
 ]);

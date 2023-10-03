@@ -7,6 +7,7 @@ const AddHome = () => {
   const [img1, setImg1] = useState(null);
   const [img2, setImg2] = useState(null);
   const [img3, setImg3] = useState(null);
+  // const [video, setVideo] = useState(null);
 
   const [type, setType] = useState("");
 
@@ -28,6 +29,9 @@ const AddHome = () => {
     const date = form.date?.value;
     const rent = form.rent?.value;
     const description = form.description?.value;
+
+
+    
 
     console.log(date);
 
@@ -53,6 +57,27 @@ const AddHome = () => {
       return null;
     };
 
+    // const uploadVideo = async (video) => {
+    //   if (!video) return null;
+    //   const formData = new FormData();
+    //   formData.append("video", video);
+    //   const url = `YOUR_VIDEO_UPLOAD_API_ENDPOINT`; // Replace with your video upload API endpoint
+    //   const res = await fetch(url, {
+    //     method: "POST",
+    //     body: formData,
+    //   });
+    //   const videoData = await res.json();
+    //   if (videoData.success) {
+    //     return videoData.data.url;
+    //   }
+    //   return null;
+    // };
+    // const videoUrl = await uploadVideo(video); // Upload video
+    // if (videoUrl) {
+    //   // If video upload is successful, add it to the homeDetails object
+    //   homeDetails.video = videoUrl;
+    // }
+
     try {
       const img1Url = await uploadImage(img1);
       const img2Url = await uploadImage(img2);
@@ -77,6 +102,7 @@ const AddHome = () => {
         owner_number,
         description,
         email,
+        // video: videoUrl,
       };
 
       fetch("https://rent-home-server.vercel.app/add-home", {
@@ -341,6 +367,18 @@ const AddHome = () => {
             />
           </div>
         </div>
+        {/* <div className="form-control w-full max-w-xs">
+          <label className="label">
+            <span className="label-text">Video</span>
+          </label>
+          <input
+            onChange={(e) => setVideo(e.target.files[0])}
+            type="file"
+            accept="video/*"
+            className="input w-full max-w-xs bg-white text-black"
+            required
+          />
+        </div> */}
 
         <div class="w-full mt-4">
           <label class="block mb-2 text-sm font-medium text-gray-600 ">
