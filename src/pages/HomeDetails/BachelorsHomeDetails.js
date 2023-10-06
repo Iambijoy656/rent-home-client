@@ -6,6 +6,7 @@ const HomeDetails = () => {
 
   const {
     _id,
+    vedio,
     image,
     address,
     email,
@@ -48,6 +49,14 @@ const HomeDetails = () => {
                 src={image[2]}
                 className="object-cover w-full aspect-square rounded-xl"
               />
+              {vedio && (
+                <video controls className=" col-span-2">
+                  <source
+                    src={vedio}
+                    // type="video/mp4"
+                  />
+                </video>
+              )}
             </div>
           </div>
 
