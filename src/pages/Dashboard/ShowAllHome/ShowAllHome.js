@@ -28,6 +28,20 @@ const ShowAllHome = () => {
       });
   };
 
+  //verify home
+  const handleVerifyHome = (id) => {
+    fetch(`https://rent-home-server.vercel.app/home/verify/${id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          toast.success("Home Verify successfully");
+          refetch();
+        }
+      });
+  };
+
   return (
     <div>
       <div className="my-5 ml-5 ">
@@ -44,6 +58,7 @@ const ShowAllHome = () => {
                 <th className="bg-white">Room Type</th>
                 <th className="bg-white">Post Date</th>
                 <th className="bg-white">Available Status</th>
+                <th className="bg-white">Verified Status</th>
                 <th className="bg-white">Details</th>
                 <th className="bg-white">Delete</th>
               </tr>
@@ -60,6 +75,18 @@ const ShowAllHome = () => {
                   <td className="bg-white">{home.date}</td>
                   <td className="bg-white ">
                     {home?.available === true ? "Available" : "Not Availble"}
+                  </td>
+                  <td className="bg-white">
+                    {home?.verified !== true ? (
+                      <button
+                        onClick={() => handleVerifyHome(home._id)}
+                        className="btn btn-xs btn-outline btn-accent"
+                      >
+                        Do Verify
+                      </button>
+                    ) : (
+                      "Verified"
+                    )}
                   </td>
                   <td className="bg-white">
                     <Link
