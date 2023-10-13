@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { AiFillHeart } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { addToWishlist } from "../../redux/feature/Whishlist/WhichlistSlice";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../context/AuthProvider";
 
 const FamilyHomeDetails = () => {
+  const { user } = useContext(AuthContext);
   const details = useLoaderData();
   //   console.log(homeDetails);
   const {
@@ -18,7 +24,43 @@ const FamilyHomeDetails = () => {
     owner_name,
     description,
   } = details;
-  console.log(image);
+  // console.log(image);
+
+  // const dispatch = useDispatch();
+  const handleAddToWishlist = (home) => {
+    // dispatch(addToWishlist(home));
+
+    const wishlistData = {
+      renterEmail: user.email,
+      wishlistHome: home,
+    };
+
+    fetch(`http://localhost:5001/wishlist`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(wishlistData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+         
+        }
+      });
+
+      fetch(`http://localhost:5001/wishlist/${home._id}`, {
+        method: "PATCH",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.modifiedCount > 0) {
+            toast.success("added home successfully in wishlist");
+           
+          }
+        });
+
+  };
 
   return (
     <section>
@@ -180,7 +222,7 @@ const FamilyHomeDetails = () => {
               </div>
 
               {rent && !details.paid && (
-                <div className="flex mt-8">
+                <div className="flex items-center  gap-5 mt-8">
                   <Link to={`/dashboard/payment/${_id}`}>
                     <button
                       type="submit"
@@ -189,10 +231,17 @@ const FamilyHomeDetails = () => {
                       Advance pay for rent
                     </button>
                   </Link>
+
+                  <p onClick={() => handleAddToWishlist(details)}>
+                    <AiFillHeart
+                      className="text-orange-500 hover:shadow-lg hover:shadow-orange-400 cursor-pointer"
+                      size={44}
+                    />
+                  </p>
                 </div>
               )}
               {rent && details.paid && (
-                <div className="flex mt-8">
+                <div className="flex  mt-8">
                   <Link>
                     <button
                       type="submit"

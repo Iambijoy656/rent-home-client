@@ -56,7 +56,7 @@ const SignUp = () => {
           email: user?.email,
           role: "renter",
         };
-        console.log(userForDB);
+        // console.log(userForDB);
 
         fetch(`https://rent-home-server.vercel.app/users`, {
           method: "POST",
@@ -102,7 +102,7 @@ const SignUp = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("save data", data);
+        // console.log("save data", data);
         navigate("/login");
       });
   };

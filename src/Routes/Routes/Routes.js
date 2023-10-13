@@ -26,6 +26,7 @@ import RenterRoute from "../RenterRoute/RenterRoute";
 import MyHomeForRent from "../../pages/Dashboard/MyHomeForRent/MyHomeForRent";
 import ShowAllHome from "../../pages/Dashboard/ShowAllHome/ShowAllHome";
 import BookeHome from "../../pages/Dashboard/BookedHome/BookeHome";
+import Wishlist from "../../pages/Wishlist/Wishlist";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp />,
+      },
+      {
+        path: "/wishlist",
+        element: <Wishlist />,
       },
       {
         path: "/bachelorsHomeDetails/:id",
@@ -91,6 +96,7 @@ export const router = createBrowserRouter([
         path: "/allHomes/family",
         element: <Family />,
       },
+  
     ],
   },
   {

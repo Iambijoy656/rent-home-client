@@ -67,7 +67,7 @@ const CheckoutForm = ({ homeData }) => {
       return;
     }
 
-    console.log(paymentIntent);
+    // console.log(paymentIntent);
 
     if (paymentIntent.status === "succeeded") {
       //   store payment information in database

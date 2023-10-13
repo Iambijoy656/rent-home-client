@@ -23,15 +23,14 @@ const Navber = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "font-medium  text-orange-600 underline underline-offset-2 transition-colors duration-200 bg-transparent"
-              : "font-medium  text-gray-700 transition-colors duration-200 bg-transparent"
+              ? "font-medium text-orange-600 underline underline-offset-2 transition-colors duration-200 bg-transparent"
+              : "font-medium text-gray-700 transition-colors duration-200 bg-transparent"
           }
           end
         >
           Home
         </NavLink>
       </li>
-
       <li>
         <NavLink
           to="/about"
@@ -44,8 +43,7 @@ const Navber = () => {
         >
           About
         </NavLink>
-      </li>
-
+     </li>
       <li>
         <NavLink
           to="/contact"
@@ -59,7 +57,22 @@ const Navber = () => {
           Contact
         </NavLink>
       </li>
-
+      <li>
+        <NavLink
+          to="/wishlist"
+          className={({ isActive }) =>
+            isActive
+              ? "font-medium  text-orange-600 underline underline-offset-2 transition-colors duration-200 bg-transparent"
+              : "font-medium  text-gray-700 transition-colors duration-200 bg-transparent"
+          }
+          end
+        >
+          Wishlist
+          <span className="badge badge-sm border-none text-white bg-orange-500 py-[11px]">
+            0
+          </span>
+        </NavLink>
+      </li>
       {user?.uid ? (
         <>
           <li>

@@ -9,7 +9,7 @@ const ShowAllHome = () => {
     queryFn: async () => {
       const res = await fetch("https://rent-home-server.vercel.app/allHomes");
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       return data;
     },
   });

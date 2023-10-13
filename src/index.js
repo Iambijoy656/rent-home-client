@@ -7,20 +7,24 @@ import AuthProvider from "./context/AuthProvider";
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import SearchProvider from "./context/SearchProvider";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <SearchProvider>
-          <Toaster position="top-center"></Toaster>
-          <App />
-        </SearchProvider>
-      </AuthProvider>
-    </QueryClientProvider>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <SearchProvider>
+            <Toaster position="top-center"></Toaster>
+            <App />
+          </SearchProvider>
+        </AuthProvider>
+      </QueryClientProvider>
+    </Provider>
   </React.StrictMode>
 );
 
