@@ -7,7 +7,7 @@ import Loading from "../Loading/Loading";
 
 const LatestFamilyHome = () => {
   const { setType } = useContext(SearchContext);
-  const { data: latestFAmilyHomes = [], isLoading } = useQuery({
+  const { data: latestFAmilyHomes = [], isLoading, refetch} = useQuery({
     queryKey: ["latestFAmilyHomes"],
     queryFn: async () => {
       const response = await fetch("https://rent-home-server.vercel.app/latestFamilyHomes");

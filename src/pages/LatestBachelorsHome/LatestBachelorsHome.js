@@ -7,7 +7,7 @@ import Loading from "../Loading/Loading";
 
 const LatestBachelorsHome = () => {
   const { setType } = useContext(SearchContext);
-  const { data: latestBachelosHomes = [], isLoading } = useQuery({
+  const { data: latestBachelosHomes = [], isLoading ,refetch} = useQuery({
     queryKey: ["latestBachelosHomes"],
     queryFn: async () => {
       const response = await fetch(

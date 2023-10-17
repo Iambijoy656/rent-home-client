@@ -46,8 +46,8 @@ const Wishlist = () => {
           </table>
         </div>
       ) : (
-        <div className="">
-          <p className="text-red-400 text-sm bg-red-200 p-3 rounded-md my-10">
+        <div className="h-64">
+          <p className=" text-red-500 text-lg text-center bg-red-200 p-3 rounded-md my-10">
             Wishlist is empty!
           </p>
         </div>
