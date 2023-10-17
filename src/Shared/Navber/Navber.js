@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
 
 const Navber = () => {
   const { logOut, user } = useContext(AuthContext);
@@ -15,6 +16,22 @@ const Navber = () => {
         console.log(err);
       });
   };
+
+
+  const url = `http://localhost:5001/wishlistHome?email=${user?.email}`;
+
+  const { data: wishlist = [], refetch } = useQuery({
+    queryKey: ["wishlist", user?.email],
+    queryFn: async () => {
+      const res = await fetch(url);
+      const data = await res.json();
+      return data;
+    
+    },
+  });
+
+
+
 
   const menuItems = (
     <>
@@ -69,7 +86,7 @@ const Navber = () => {
         >
           Wishlist
           <span className="badge badge-sm border-none text-white bg-orange-500 py-[11px]">
-            0
+            {wishlist.length}
           </span>
         </NavLink>
       </li>

@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
+import { AiFillHeart } from "react-icons/ai";
+import { useQueryClient } from "@tanstack/react-query";
 
 const HomeDetails = () => {
+  const queryClient = useQueryClient();
+  const { user } = useContext(AuthContext);
   const details = useLoaderData();
 
   const {
@@ -20,6 +26,78 @@ const HomeDetails = () => {
     owner_name,
     description,
   } = details;
+
+  // const handleAddToWishlist = (home) => {
+  //   // dispatch(addToWishlist(home));
+  //   const wishlistData = {
+  //     renterEmail: user.email,
+  //     wishlistHome: home,
+  //   };
+
+  //   fetch(`http://localhost:5001/wishlist`, {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(wishlistData),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       if (data.acknowledged) {
+  //         fetch(`http://localhost:5001/wishlist/${home._id}`, {
+  //           method: "PATCH",
+  //         })
+  //           .then((res) => res.json())
+  //           .then((data) => {
+  //             if (data.modifiedCount > 0) {
+  //               toast.success("added home successfully in wishlist");
+  //               // Reload the page
+  //               // window.location.reload();
+  //             }
+  //           });
+  //       }else{
+  //         toast.error("This Home already Added in wishlist");
+  //       }
+  //     });
+  // };
+
+
+  const handleAddToWishlist = (home) => {
+    const wishlistData = {
+      renterEmail: user.email,
+      wishlistHome: home,
+    };
+
+    fetch(`http://localhost:5001/wishlist`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(wishlistData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          fetch(`http://localhost:5001/wishlist/${home._id}`, {
+            method: "PATCH",
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.modifiedCount > 0) {
+                toast.success("Home added to the wishlist successfully");
+                
+                // Trigger a refetch of the specific query
+                queryClient.invalidateQueries('yourQueryKey');
+              }
+            });
+        } else {
+          toast.error("This Home is already in the wishlist");
+        }
+      });
+  };
+
 
   return (
     <section>
@@ -191,7 +269,7 @@ const HomeDetails = () => {
               </div>
 
               {rent && !details.paid && (
-                <div className="flex mt-8">
+                <div className="flex items-center  gap-5 mt-8">
                   <Link to={`/dashboard/payment/${_id}`}>
                     <button
                       type="submit"
@@ -200,6 +278,12 @@ const HomeDetails = () => {
                       Advance pay for rent
                     </button>
                   </Link>
+                  <p onClick={() => handleAddToWishlist(details)}>
+                    <AiFillHeart
+                      className="text-orange-500 hover:shadow-lg hover:shadow-orange-400 cursor-pointer"
+                      size={44}
+                    />
+                  </p>
                 </div>
               )}
               {rent && details.paid && (

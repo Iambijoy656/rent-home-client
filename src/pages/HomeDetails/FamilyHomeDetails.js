@@ -5,10 +5,13 @@ import { useDispatch } from "react-redux";
 import { addToWishlist } from "../../redux/feature/Whishlist/WhichlistSlice";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../context/AuthProvider";
+import { useQueryClient } from "@tanstack/react-query";
 
 const FamilyHomeDetails = () => {
+  const queryClient = useQueryClient();
   const { user } = useContext(AuthContext);
   const details = useLoaderData();
+
   //   console.log(homeDetails);
   const {
     _id,
@@ -24,12 +27,42 @@ const FamilyHomeDetails = () => {
     owner_name,
     description,
   } = details;
-  // console.log(image);
 
-  // const dispatch = useDispatch();
+  // const handleAddToWishlist = (home) => {
+  //   // dispatch(addToWishlist(home));
+
+  //   const wishlistData = {
+  //     renterEmail: user.email,
+  //     wishlistHome: home,
+  //   };
+
+  //   fetch(`http://localhost:5001/wishlist`, {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(wishlistData),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       if (data.acknowledged) {
+  //         fetch(`http://localhost:5001/wishlist/${home._id}`, {
+  //           method: "PATCH",
+  //         })
+  //           .then((res) => res.json())
+  //           .then((data) => {
+  //             if (data.modifiedCount > 0) {
+  //               toast.success("added home successfully in wishlist");
+  //             }
+  //           });
+  //       }else{
+  //         toast.error("This Home already Added in wishlist");
+  //       }
+  //     });
+  // };
+
   const handleAddToWishlist = (home) => {
-    // dispatch(addToWishlist(home));
-
     const wishlistData = {
       renterEmail: user.email,
       wishlistHome: home,
@@ -44,22 +77,26 @@ const FamilyHomeDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
+        // Trigger a refetch of the specific query
+        queryClient.invalidateQueries("yourQueryKey");
         if (data.acknowledged) {
-         
+          fetch(`http://localhost:5001/wishlist/${home._id}`, {
+            method: "PATCH",
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.modifiedCount > 0) {
+                toast.success("Home added to the wishlist successfully");
+
+                // Trigger a refetch of the specific query
+                queryClient.invalidateQueries("yourQueryKey");
+              }
+            });
+        } else {
+          toast.error("This Home is already in the wishlist");
         }
       });
-
-      fetch(`http://localhost:5001/wishlist/${home._id}`, {
-        method: "PATCH",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.modifiedCount > 0) {
-            toast.success("added home successfully in wishlist");
-           
-          }
-        });
-
   };
 
   return (
