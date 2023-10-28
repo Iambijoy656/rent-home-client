@@ -6,9 +6,14 @@ const SearchProvider = ({ children }) => {
   const [location, setLocation] = useState("");
   const [district, setDistrict] = useState("");
   const [type, setType] = useState("");
+  const [price, setPrice] = useState("");
+  const [state, setState] = useState({
+    price: "",
+    type: "",
+  });
   const [submitOn ,setSubmitOn] = useState(false);
 
-  const searchInfo = {location,setLocation,district, setDistrict,type, setType,submitOn ,setSubmitOn};
+  const searchInfo = {price, setPrice,location,setLocation,district, setDistrict,type, setType,submitOn ,setSubmitOn,state, setState};
   return (
     <SearchContext.Provider value={searchInfo}>
       {children}

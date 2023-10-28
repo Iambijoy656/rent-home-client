@@ -14,24 +14,36 @@ const Bachelors = () => {
     setDistrict,
     type,
     setType,
+    state,
+    price,
+    setPrice,
+    setState,
     submitOn,
   } = useContext(SearchContext);
+
 
   useEffect(() => {
     setLoading(true);
     setBachelorsHome([]);
     fetch(
-      `https://rent-home-server.vercel.app/homes?location=${location}&&district=${district}&&type=${type}`
+      `http://localhost:5001/homes?location=${location}&&district=${district}&&type=${type}&&price=${price}`
     )
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
         setBachelorsHome(data);
-        setLocation("");
-        setType("");
-        setDistrict("");
+        // setLocation("");
+        // setType("");
+        // setDistrict("");
       });
   }, [submitOn]);
+
+
+  //  const path = window.location.pathname
+  // const homeType = (path.split('/')[2])
+
+  // console.log(state.type = homeType)
+  // console.log(state)
 
   return (
     <div className="mb-10 max-w-[70%]">

@@ -27,6 +27,7 @@ import MyHomeForRent from "../../pages/Dashboard/MyHomeForRent/MyHomeForRent";
 import ShowAllHome from "../../pages/Dashboard/ShowAllHome/ShowAllHome";
 import BookeHome from "../../pages/Dashboard/BookedHome/BookeHome";
 import Wishlist from "../../pages/Wishlist/Wishlist";
+import UpdateProfile from "../../pages/Dashboard/UpdateProfile/UpdateProfile";
 
 export const router = createBrowserRouter([
   {
@@ -96,7 +97,6 @@ export const router = createBrowserRouter([
         path: "/allHomes/family",
         element: <Family />,
       },
-  
     ],
   },
   {
@@ -123,6 +123,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/myProfile",
         element: <MyProfile></MyProfile>,
+      },
+      {
+        path: "/dashboard/update-profile",
+        element: <UpdateProfile></UpdateProfile>
       },
       {
         path: "/dashboard/payment/:id",

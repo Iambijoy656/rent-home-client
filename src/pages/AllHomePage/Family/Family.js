@@ -13,6 +13,8 @@ const Family = () => {
     setDistrict,
     type,
     setType,
+    price,
+    setPrice,
     submitOn,
   } = useContext(SearchContext);
 
@@ -20,7 +22,7 @@ const Family = () => {
     setLoading(true);
     setFamilyHome([]);
     fetch(
-      `https://rent-home-server.vercel.app/homes?location=${location}&&district=${district}&&type=${type}`
+      `http://localhost:5001/homes?location=${location}&&district=${district}&&type=${type}&&price=${price}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -29,6 +31,7 @@ const Family = () => {
         setDistrict("");
         setType("");
         setLocation("");
+
       });
   }, [submitOn]);
   return (

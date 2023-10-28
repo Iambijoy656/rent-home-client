@@ -3,6 +3,7 @@ import { AuthContext } from "../../../context/AuthProvider";
 import useAdmin from "../../../hooks/useAdmin";
 import useOwner from "../../../hooks/useOwner";
 import useRenter from "../../../hooks/useRenter";
+import { Link } from "react-router-dom";
 
 const MyProfile = () => {
   const { user } = useContext(AuthContext);
@@ -29,7 +30,7 @@ const MyProfile = () => {
             </p>
           </div>
 
-          <div className="mt-6">
+          <div className="my-6">
             <h2 className="text-gray-700 text-sm font-semibold uppercase">
               Contact Information
             </h2>
@@ -45,6 +46,9 @@ const MyProfile = () => {
               </li>
             </ul>
           </div>
+
+
+          {/* <Link to={'/dashboard/update-profile'} className="mt-6 bg-orange-500 hover:bg-orange-800 transition duration-200 selection: p-2 rounded-md text-white">Update Profile</Link> */}
         </div>
       </div>
     </div>
