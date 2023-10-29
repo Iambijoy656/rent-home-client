@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { SearchContext } from "../../context/SearchProvider";
 import MultiRangeSlider from "../MultiRangeSlider/MultiRangeSlider";
 import debounce from "lodash.debounce";
 
 const AllHomeSideber = () => {
+  const formRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const {
     location,
@@ -91,6 +92,7 @@ const AllHomeSideber = () => {
       return data;
     },
   });
+
   return (
     <div className="mt-20 ">
       <div>
@@ -131,7 +133,7 @@ const AllHomeSideber = () => {
             onChange={({ min, max }) => priceFilterHandler(min, max)}
           />
         </div> */}
-        <form>
+        <form >
           <select
             onChange={(e) => setLocation(e.target.value)}
             name="location"
@@ -188,7 +190,9 @@ const AllHomeSideber = () => {
             <Link to={`/allHomes/${type}`}>
               <button
                 disabled={!type || !location || !district == true}
-                onClick={() => setSubmitOn(!submitOn)}
+                onClick={() => {
+                  setSubmitOn(!submitOn);
+                }}
                 type="submit"
                 className="px-16 py-5 font-semibold uppercase space-x-1 bg-orange-500 text-white transition-colors duration-500 ease-in-out cursor-pointer hover:bg-orange-600 disabled:bg-orange-400 "
               >
