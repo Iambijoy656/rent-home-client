@@ -33,7 +33,7 @@ const Bachelors = () => {
         setLoading(false);
         setBachelorsHome(data);
         // setLocation("");
-        // setType("");
+        setType("");
         // setDistrict("");
       });
   }, [submitOn]);

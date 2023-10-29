@@ -28,9 +28,9 @@ const Family = () => {
       .then((data) => {
         setLoading(false);
         setFamilyHome(data);
-        setDistrict("");
+        // setDistrict("");
         setType("");
-        setLocation("");
+        // setLocation("");
 
       });
   }, [submitOn]);

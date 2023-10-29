@@ -33,7 +33,7 @@ const AddHome = () => {
     const need_room_mates = form.need_room_mates?.value;
     const owner_number = form.number?.value;
     const date = form.date?.value;
-    const rent = form.rent?.value;
+    const rent = parseFloat(form.rent?.value);
     const description = form.description?.value;
 
     if (description.length < 160) {

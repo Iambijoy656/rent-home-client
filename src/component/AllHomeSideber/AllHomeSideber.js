@@ -181,7 +181,7 @@ const AllHomeSideber = () => {
             <option disabled selected>
               Price Range
             </option>
-            <option defaultValue="10,000 to 20,000">0-25000</option>
+            <option defaultValue="10,000 to 20,000">0-20000</option>
             <option defaultValue="20,000 to 40,000">20000-40000</option>
             <option defaultValue="40,000 to 80,000">40000-80000</option>
             <option defaultValue="80000 to 200000">80000-200000</option>
