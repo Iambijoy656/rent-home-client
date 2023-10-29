@@ -23,51 +23,55 @@ const AllHomeSideber = () => {
     setSubmitOn,
   } = useContext(SearchContext);
 
-  // const fetchUsingPrice = (state) => {
-  //   setLoading(true);
+  const path = window.location.pathname;
+  const pathName = path.split("/")[2];
 
-  //   fetch("https://flight-list-server.vercel.app/airLines/filtering", {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(state),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setLoading(false);
-  //     });
-  // };
+  const fetchUsingPrice = (state) => {
+    setLoading(true);
 
-  // const debouncedFilter = useCallback(
-  //   debounce((state) => {
-  //     console.log("called");
-  //     // api call
-  //     // fetchUsingPrice(state);
-  //   }, 500),
-  //   []
-  // );
+    fetch("http://localhost:5001/homes/filtering", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(state),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setLoading(false);
+      });
+  };
 
-  // //price filter
-  // const priceFilterHandler = (min, max) => {
-  //   const price = `${min},${max}`;
-  //   console.log(price);
+  const debouncedFilter = useCallback(
+    debounce((state) => {
+      console.log("called");
+      console.log("it is", state);
+      // api call
+      fetchUsingPrice(state);
+    }, 500),
+    []
+  );
 
-  //   if (state.price == "") {
-  //     setState({ ...state, price: price });
-  //   }
-  //   if (state.price != "" && state.price != price) {
-  //     const prevState = { ...state };
-  //     prevState.price = price;
+  //price filter
+  const priceFilterHandler = (min, max) => {
+    state.type = state.type = pathName;
+    const price = `${min},${max}`;
 
-  //     console.log("comes");
-  //     debouncedFilter(prevState);
+    if (state.price == "") {
+      setState({ ...state, price: price });
+    }
+    if (state.price != "" && state.price != price) {
+      const prevState = { ...state };
+      prevState.price = price;
 
-  //     setState({ ...state, ...prevState });
-  //   }
-  // };
+      console.log("comes");
+      debouncedFilter(prevState);
 
-  // console.log("state", state);
+      setState({ ...state, ...prevState });
+    }
+  };
+
+  console.log("state", state);
 
   //common location
   const { data: locations = [] } = useQuery({
@@ -115,7 +119,9 @@ const AllHomeSideber = () => {
           </NavLink>
           <NavLink
             to="/allHomes/family"
-            onClick={() => setType("family")}
+            onClick={() => {
+              setType("family");
+            }}
             className={({ isActive }) =>
               isActive
                 ? "font-medium  text-white bg-orange-500 p-4 m-2"
@@ -125,15 +131,15 @@ const AllHomeSideber = () => {
             Family Home
           </NavLink>
         </div>
-        {/* <div className="my-4">
+        <div className="my-4">
           {" "}
           <MultiRangeSlider
             min={5000}
             max={80000}
             onChange={({ min, max }) => priceFilterHandler(min, max)}
           />
-        </div> */}
-        <form >
+        </div>
+        <form>
           <select
             onChange={(e) => setLocation(e.target.value)}
             name="location"
@@ -173,7 +179,7 @@ const AllHomeSideber = () => {
             <option defaultValue="family">family</option>
             <option defaultValue="bechalors">bechalors</option>
           </select>{" "}
-          <select
+          {/* <select
             onChange={(e) => setPrice(e.target.value)}
             name="type"
             className="select border-orange-500 h w-full border-2 max-w-xs my-2 focus:outline-none bg-white text-black"
@@ -185,7 +191,7 @@ const AllHomeSideber = () => {
             <option defaultValue="20,000 to 40,000">20000-40000</option>
             <option defaultValue="40,000 to 80,000">40000-80000</option>
             <option defaultValue="80000 to 200000">80000-200000</option>
-          </select>
+          </select> */}
           <div className="text-center my-5">
             <Link to={`/allHomes/${type}`}>
               <button

@@ -32,9 +32,9 @@ const Bachelors = () => {
       .then((data) => {
         setLoading(false);
         setBachelorsHome(data);
-        // setLocation("");
+        setLocation("");
         setType("");
-        // setDistrict("");
+        setDistrict("");
       });
   }, [submitOn]);
 
