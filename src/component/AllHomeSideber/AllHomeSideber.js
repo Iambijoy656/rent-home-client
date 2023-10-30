@@ -21,6 +21,8 @@ const AllHomeSideber = () => {
     setPrice,
     submitOn,
     setSubmitOn,
+    setHomes,
+    homes
   } = useContext(SearchContext);
 
   const path = window.location.pathname;
@@ -38,6 +40,7 @@ const AllHomeSideber = () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        setHomes(data)
         setLoading(false);
       });
   };

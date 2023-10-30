@@ -5,7 +5,6 @@ import Loading from "../../Loading/Loading";
 
 const Family = () => {
   const [loading, setLoading] = useState(false);
-  const [familyHome, setFamilyHome] = useState([]);
   const {
     location,
     setLocation,
@@ -13,32 +12,39 @@ const Family = () => {
     setDistrict,
     type,
     setType,
+    state,
     price,
     setPrice,
+    setState,
     submitOn,
+    setHomes,
+    homes,
   } = useContext(SearchContext);
 
   useEffect(() => {
     setLoading(true);
-    setFamilyHome([]);
     fetch(
       `http://localhost:5001/homes?location=${location}&&district=${district}&&type=${type}&&price=${price}`
     )
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
         setLoading(false);
-        setFamilyHome(data);
-        setDistrict("");
-        setType("");
+
+        if (state.price != "5000,80000" ) {
+          setHomes(data);
+        } 
         setLocation("");
+        setType("");
+        setDistrict("");
       });
   }, [submitOn]);
+
   return (
     <div className="mb-10 max-w-[70%]">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4  ">
         {loading ? <Loading></Loading> : ""}
-        {familyHome.length > 0 &&
-          familyHome.map((home) => (
+        {homes.length > 0 &&
+          homes.map((home) => (
             <FamilyHomeCard key={home._id} home={home}></FamilyHomeCard>
           ))}
       </div>

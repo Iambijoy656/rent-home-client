@@ -11,9 +11,10 @@ const SearchProvider = ({ children }) => {
     price: "",
     type: "",
   });
+  const [homes ,setHomes] = useState([]);
   const [submitOn ,setSubmitOn] = useState(false);
 
-  const searchInfo = {price, setPrice,location,setLocation,district, setDistrict,type, setType,submitOn ,setSubmitOn,state, setState};
+  const searchInfo = {price, setPrice,homes ,setHomes,location,setLocation,district, setDistrict,type, setType,submitOn ,setSubmitOn,state, setState};
   return (
     <SearchContext.Provider value={searchInfo}>
       {children}

@@ -6,7 +6,7 @@ import Loading from "../../Loading/Loading";
 
 const Bachelors = () => {
   const [loading, setLoading] = useState([]);
-  const [bachelorsHome, setBachelorsHome] = useState([]);
+  // const [bachelorsHome, setBachelorsHome] = useState([]);
   const {
     location,
     setLocation,
@@ -19,25 +19,31 @@ const Bachelors = () => {
     setPrice,
     setState,
     submitOn,
+    setHomes,
+    homes,
   } = useContext(SearchContext);
-
 
   useEffect(() => {
     setLoading(true);
-    setBachelorsHome([]);
+    // setBachelorsHome([]);
     fetch(
       `http://localhost:5001/homes?location=${location}&&district=${district}&&type=${type}&&price=${price}`
     )
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
-        setBachelorsHome(data);
+
+        if (state.price != "5000,80000" ) {
+          setHomes(data);
+        } 
+
+
+
         setLocation("");
         setType("");
         setDistrict("");
       });
   }, [submitOn]);
-
 
   //  const path = window.location.pathname
   // const homeType = (path.split('/')[2])
@@ -49,8 +55,8 @@ const Bachelors = () => {
     <div className="mb-10 max-w-[70%]">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4  ">
         {loading ? <Loading></Loading> : ""}
-        {bachelorsHome.length > 0 &&
-          bachelorsHome.map((home) => (
+        {homes.length > 0 &&
+          homes.map((home) => (
             <BachelorsHomeCard key={home._id} home={home}></BachelorsHomeCard>
           ))}
       </div>
