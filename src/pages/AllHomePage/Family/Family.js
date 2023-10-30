@@ -23,6 +23,7 @@ const Family = () => {
 
   useEffect(() => {
     setLoading(true);
+    // setHomes([]);
     fetch(
       `http://localhost:5001/homes?location=${location}&&district=${district}&&type=${type}&&price=${price}`
     )
@@ -30,9 +31,10 @@ const Family = () => {
       .then((data) => {
         setLoading(false);
 
-        if (state.price != "5000,80000" ) {
+        // if (state.price != "5000,80000") {
+        //   setHomes(data);
+        // }
           setHomes(data);
-        } 
         setLocation("");
         setType("");
         setDistrict("");

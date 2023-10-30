@@ -25,7 +25,7 @@ const Bachelors = () => {
 
   useEffect(() => {
     setLoading(true);
-    // setBachelorsHome([]);
+    // setHomes([]);
     fetch(
       `http://localhost:5001/homes?location=${location}&&district=${district}&&type=${type}&&price=${price}`
     )
@@ -33,11 +33,11 @@ const Bachelors = () => {
       .then((data) => {
         setLoading(false);
 
-        if (state.price != "5000,80000" ) {
-          setHomes(data);
-        } 
+        // if (state.price != "5000,80000" ) {
+        //   setHomes(data);
+        // }
 
-
+        setHomes(data);
 
         setLocation("");
         setType("");
