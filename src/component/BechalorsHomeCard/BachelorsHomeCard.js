@@ -21,7 +21,7 @@ const BachelorsHomeCard = ({ home }) => {
   return (
     <div className="card bg-slate-50 rounded-none shadow-xl">
       <figure>
-        <img className="h-64 w-full " src={image[2]} alt="homes" />
+        <img className="h-64 w-full " src={image[1]} alt="homes" />
       </figure>
       <div className="p-5">
         <div className="flex  justify-between items-center">

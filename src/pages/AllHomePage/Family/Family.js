@@ -34,7 +34,7 @@ const Family = () => {
         // if (state.price != "5000,80000") {
         //   setHomes(data);
         // }
-          setHomes(data);
+        setHomes(data);
         setLocation("");
         setType("");
         setDistrict("");

@@ -94,7 +94,6 @@ const SearchingSection = () => {
             </option>
           ))}
         </select>
-
         <select
           required
           onChange={(e) => setType(e.target.value)}

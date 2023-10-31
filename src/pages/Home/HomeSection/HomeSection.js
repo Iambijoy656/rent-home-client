@@ -1,5 +1,6 @@
 import React from "react";
 import homeIcon from "../../../assets/images/homeIcon.png";
+import { Link } from "react-router-dom";
 
 const HomeSection = () => {
   return (
@@ -28,8 +29,8 @@ const HomeSection = () => {
             </p>
           </div>
           <div>
-            <a
-              href="/"
+            <Link
+              to="/"
               aria-label=""
               className="inline-flex items-center px-8 py-3 font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800 bg-orange-500 text-white"
             >
@@ -41,7 +42,7 @@ const HomeSection = () => {
               >
                 <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="flex items-center justify-center -mx-4 lg:pl-8">
