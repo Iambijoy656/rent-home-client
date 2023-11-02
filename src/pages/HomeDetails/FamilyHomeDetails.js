@@ -33,9 +33,10 @@ const FamilyHomeDetails = () => {
   const handleAddToWishlist = (home) => {
     if (!user?.email) {
       navigate("/login");
+      return
     }
     const wishlistData = {
-      renterEmail: user.email,
+      renterEmail: user?.email,
       wishlistHome: home,
     };
 
