@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import { AiFillHeart } from "react-icons/ai";
 import { useQueryClient } from "@tanstack/react-query";
 
 const HomeDetails = () => {
+  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const { user } = useContext(AuthContext);
   const details = useLoaderData();
@@ -64,6 +65,9 @@ const HomeDetails = () => {
 
 
   const handleAddToWishlist = (home) => {
+    if (!user?.email) {
+      navigate("/login");
+    }
     const wishlistData = {
       renterEmail: user.email,
       wishlistHome: home,

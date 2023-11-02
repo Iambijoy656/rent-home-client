@@ -28,6 +28,7 @@ import ShowAllHome from "../../pages/Dashboard/ShowAllHome/ShowAllHome";
 import BookeHome from "../../pages/Dashboard/BookedHome/BookeHome";
 import Wishlist from "../../pages/Wishlist/Wishlist";
 import UpdateProfile from "../../pages/Dashboard/UpdateProfile/UpdateProfile";
+import UserDetails from "../../pages/Dashboard/UserDetails/UserDetails";
 
 export const router = createBrowserRouter([
   {
@@ -45,11 +46,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: (
-          <PrivateRoute>
-            <Contact />
-          </PrivateRoute>
-        ),
+        element: <Contact />,
       },
       {
         path: "/login",
@@ -126,7 +123,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/update-profile",
-        element: <UpdateProfile></UpdateProfile>
+        element: <UpdateProfile></UpdateProfile>,
       },
       {
         path: "/dashboard/payment/:id",
@@ -153,6 +150,16 @@ export const router = createBrowserRouter([
             <ShowAllHome></ShowAllHome>
           </AdminRoute>
         ),
+      },
+      {
+        path: "/dashboard/user-details/:email",
+        element: (
+          <AdminRoute>
+            <UserDetails/>
+          </AdminRoute>
+        ),
+      
+
       },
       {
         path: "/dashboard/addhome",

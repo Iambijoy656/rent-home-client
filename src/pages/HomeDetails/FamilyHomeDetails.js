@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { AiFillHeart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { addToWishlist } from "../../redux/feature/Whishlist/WhichlistSlice";
@@ -8,6 +8,7 @@ import { AuthContext } from "../../context/AuthProvider";
 import { useQueryClient } from "@tanstack/react-query";
 
 const FamilyHomeDetails = () => {
+  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const { user } = useContext(AuthContext);
   const details = useLoaderData();
@@ -63,8 +64,11 @@ const FamilyHomeDetails = () => {
   // };
 
   const handleAddToWishlist = (home) => {
+    if (!user?.email) {
+      navigate("/login");
+    }
     const wishlistData = {
-      renterEmail: user.email,
+      renterEmail: user?.email,
       wishlistHome: home,
     };
 

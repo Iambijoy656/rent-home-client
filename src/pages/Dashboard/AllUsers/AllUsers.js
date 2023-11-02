@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+
 
 const AllUsers = () => {
   const { data: users = [], refetch } = useQuery({
@@ -24,6 +26,10 @@ const AllUsers = () => {
         }
       });
   };
+
+
+
+
 
   const handleDeleteUser = (email) => {
     fetch(`https://rent-home-server.vercel.app/user-delete/${email}`, {
@@ -50,6 +56,7 @@ const AllUsers = () => {
               <th className="bg-white">Email</th>
               <th className="bg-white">Role</th>
               <th className="bg-white">Admin</th>
+              <th className="bg-white">Details</th>
               <th className="bg-white">Delete</th>
             </tr>
           </thead>
@@ -70,6 +77,15 @@ const AllUsers = () => {
                     </button>
                   )}
                 </td>
+                <td className="bg-white">
+                  <Link
+                  to={`/dashboard/user-details/${user.email}`}
+                    // onClick={() => handleDetails(user.email)}
+                    className="btn btn-xs btn-outline btn-success"
+                  >
+                    Details
+                  </Link>
+                </td>{" "}
                 <td className="bg-white">
                   <button
                     onClick={() => handleDeleteUser(user.email)}

@@ -1,21 +1,14 @@
-import React, { useContext, } from "react";
-import { AuthContext } from "../../../context/AuthProvider";
-import useAdmin from "../../../hooks/useAdmin";
-import useOwner from "../../../hooks/useOwner";
-import useRenter from "../../../hooks/useRenter";
-import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
-const MyProfile = () => {
-  const { user } = useContext(AuthContext);
-  const [isAdmin] = useAdmin(user.email);
-  const [isOwner] = useOwner(user.email);
-  const [isRenter] = useRenter(user.email);
-
-  const url = `http://localhost:5001/userData?email=${user?.email}`;
+const UserDetails = () => {
+  const params = useLocation();
+  const email = params.pathname.split("/")[3];
+  const url = `http://localhost:5001/userData?email=${email}`;
 
   const { data: userData = [], refetch } = useQuery({
-    queryKey: ["userData", user?.email],
+    queryKey: ["userData", email],
     queryFn: async () => {
       const res = await fetch(url);
       const data = await res.json();
@@ -24,7 +17,6 @@ const MyProfile = () => {
   });
 
   return (
-
     <>
       <div className="flex  mb-5">
         <h2 className="text-2xl px-5 font-bold  bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-pink-500 to-purple-500">
@@ -198,19 +190,28 @@ const MyProfile = () => {
                       )}
                     </div>
                     <div className="grid grid-cols-2 mb-8">
-                      <div className="px-4 ml-4 py-2 font-semibold">Birthday</div>
+                      {/* <div className="px-4 ml-6 py-2 font-semibold">
+                        Birthday
+                      </div>
+                      {userData?.dateOfBirth && (
+                        <div className="px-4 py-2">{userData?.dateOfBirth}</div>
+                      )} */}
+                    </div>{" "}    <div className="grid grid-cols-2 mb-8">
+                      <div className="px-4  py-2 font-semibold">
+                        Birthday
+                      </div>
                       {userData?.dateOfBirth && (
                         <div className="px-4 py-2">{userData?.dateOfBirth}</div>
                       )}
                     </div>{" "}
                   </div>
                 </div>
-                <Link
+                {/* <Link
                   to={`/dashboard/update-profile/`}
                   className="bg-blue-500  text-white font-semibold px-6 py-2 mt-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:shadow-outline"
                 >
                   Update Profile
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
@@ -220,4 +221,4 @@ const MyProfile = () => {
   );
 };
 
-export default MyProfile;
+export default UserDetails;
