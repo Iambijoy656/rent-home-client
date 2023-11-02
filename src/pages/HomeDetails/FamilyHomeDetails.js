@@ -6,6 +6,7 @@ import { addToWishlist } from "../../redux/feature/Whishlist/WhichlistSlice";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../context/AuthProvider";
 import { useQueryClient } from "@tanstack/react-query";
+import ReviewForm from "../../component/ReviewForm/ReviewForm";
 
 const FamilyHomeDetails = () => {
   const navigate = useNavigate();
@@ -29,46 +30,12 @@ const FamilyHomeDetails = () => {
     description,
   } = details;
 
-  // const handleAddToWishlist = (home) => {
-  //   // dispatch(addToWishlist(home));
-
-  //   const wishlistData = {
-  //     renterEmail: user.email,
-  //     wishlistHome: home,
-  //   };
-
-  //   fetch(`http://localhost:5001/wishlist`, {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(wishlistData),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       if (data.acknowledged) {
-  //         fetch(`http://localhost:5001/wishlist/${home._id}`, {
-  //           method: "PATCH",
-  //         })
-  //           .then((res) => res.json())
-  //           .then((data) => {
-  //             if (data.modifiedCount > 0) {
-  //               toast.success("added home successfully in wishlist");
-  //             }
-  //           });
-  //       }else{
-  //         toast.error("This Home already Added in wishlist");
-  //       }
-  //     });
-  // };
-
   const handleAddToWishlist = (home) => {
     if (!user?.email) {
       navigate("/login");
     }
     const wishlistData = {
-      renterEmail: user?.email,
+      renterEmail: user.email,
       wishlistHome: home,
     };
 
@@ -82,8 +49,6 @@ const FamilyHomeDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        // Trigger a refetch of the specific query
-        queryClient.invalidateQueries("yourQueryKey");
         if (data.acknowledged) {
           fetch(`http://localhost:5001/wishlist/${home._id}`, {
             method: "PATCH",
@@ -294,6 +259,17 @@ const FamilyHomeDetails = () => {
                 </div>
               )}
             </form>
+
+            {/* Revirew section */}
+            {/* <div className="mt-10">
+              <div>
+                <p className="text-black text-md font-semibold tracking-wider mt-3 ">
+                  SUBMIT YOUR REVIEW
+                </p>
+
+                <ReviewForm home={details} />
+              </div>
+            </div> */}
           </div>
         </div>
       </div>

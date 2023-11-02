@@ -28,41 +28,6 @@ const HomeDetails = () => {
     description,
   } = details;
 
-  // const handleAddToWishlist = (home) => {
-  //   // dispatch(addToWishlist(home));
-  //   const wishlistData = {
-  //     renterEmail: user.email,
-  //     wishlistHome: home,
-  //   };
-
-  //   fetch(`http://localhost:5001/wishlist`, {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(wishlistData),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       if (data.acknowledged) {
-  //         fetch(`http://localhost:5001/wishlist/${home._id}`, {
-  //           method: "PATCH",
-  //         })
-  //           .then((res) => res.json())
-  //           .then((data) => {
-  //             if (data.modifiedCount > 0) {
-  //               toast.success("added home successfully in wishlist");
-  //               // Reload the page
-  //               // window.location.reload();
-  //             }
-  //           });
-  //       }else{
-  //         toast.error("This Home already Added in wishlist");
-  //       }
-  //     });
-  // };
-
 
   const handleAddToWishlist = (home) => {
     if (!user?.email) {
